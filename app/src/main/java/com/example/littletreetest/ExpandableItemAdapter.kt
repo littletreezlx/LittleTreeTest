@@ -28,20 +28,21 @@ class ExpandableItemAdapter
         addItemType(TYPE_LEVEL_ROLE_ATTR_CONCRETE, R.layout.item_expandable_lv1)
     }
 
+    var layoutPosition = -1
+
+
     override fun convert(holder: BaseViewHolder, item: MultiItemEntity) {
+        Log.d("LittleTreeTest","convert: ${holder.adapterPosition}")
         when (holder.itemViewType) {
             TYPE_LEVEL_ROLE_ATTR -> {
-//                when (holder.layoutPosition % 3) {
-//                    0 -> holder.setImageResource(R.id.iv_head, R.mipmap.head_img0)
-//                    1 -> holder.setImageResource(R.id.iv_head, R.mipmap.head_img1)
-//                }
                 val lv0 = item as Level0Item
+                layoutPosition++
+
                 holder.setText(R.id.tv_lv0, lv0.title)
-//                val headView: View = layoutInflater.inflate(R.layout.item_head_view, null, false)
-//                        .setImageResource(R.id.iv, if (lv0.isExpanded) R.mipmap.arrow_b else R.mipmap.arrow_r)
+                holder.addOnClickListener(R.id.tv_lv0)
+
                 holder.itemView.setOnClickListener {
                     val pos = holder.adapterPosition
-//                    Logger.d(TAG, "Level 0 item pos: " + pos)
                     if (lv0.isExpanded) {
                         collapse(pos)
                     } else {
@@ -49,21 +50,16 @@ class ExpandableItemAdapter
                     }
                 }
 //                val view: View = layoutInflater.inflate(R.layout.head_view, mRecyclerView.parent as ViewGroup, false)
-//
 //                val headerView = getHeaderView(0, View.OnClickListener { headerAndFooterAdapter.addHeaderView(getHeaderView(1, removeHeaderListener), 0) })
 //                headerAndFooterAdapter.addHeaderView(headerView)
             }
-
             TYPE_LEVEL_ROLE_ATTR_CONCRETE -> {
                 val lv1 = item as Level1Item
+                lv1.parentPositionInData = layoutPosition
+
                 holder.setText(R.id.tv_lv1, lv1.title)
-                holder.itemView.setOnClickListener {
-                    val pos = holder.adapterPosition
-                    Log.d(TAG, "Level 1 item pos: " + pos + "___itemtag:"+ holder.itemView.tag)
-
-
-                }
-//                holder.itemView.id
+                holder.addOnClickListener(R.id.tv_lv1)
+                holder.addOnLongClickListener(R.id.tv_lv1)
             }
 
 //            TYPE_PERSON -> {
@@ -78,6 +74,19 @@ class ExpandableItemAdapter
 //            }
         }
     }
+
+
+    override fun remove(position: Int) {
+        super.remove(position)
+    }
+
+
+    fun getPositionInList(level1Item: Level1Item): Int{
+        val s = data
+        val level0 = data[level1Item.parentPositionInData] as Level0Item
+        return level0.getSubItemPosition(level1Item)
+    }
+
 
     companion object {
         private val TAG = ExpandableItemAdapter::class.java.simpleName
