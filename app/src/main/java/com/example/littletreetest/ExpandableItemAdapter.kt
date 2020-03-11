@@ -7,21 +7,8 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
-/**
- * 文 件 名: ExpandableItemAdapter
- * 创 建 人: Allen
- * 创建日期: 2017/6/13 15:12
- * 修改时间：
- * 修改备注：
- */
-class ExpandableItemAdapter
-/**
- * Same as QuickAdapter#QuickAdapter(Context,int) but with
- * some initialization data.
 
- * @param data A new list is created out of this one to avoid mutable list
- */
-(data: List<MultiItemEntity>) : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(data) {
+class ExpandableItemAdapter(data: List<MultiItemEntity>) : BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder>(data) {
 
     init {
         addItemType(TYPE_LEVEL_ROLE_ATTR, R.layout.item_expandable_lv0)

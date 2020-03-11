@@ -47,7 +47,7 @@ class MainFragment : Fragment() {
         }
         rv.adapter = testAdapter
         rv.layoutManager = manager
-        testAdapter.expandAll()
+        testAdapter.expandall
 
 
         testAdapter.onItemChildClickListener = BaseQuickAdapter.OnItemChildClickListener { adapter, view, position ->
