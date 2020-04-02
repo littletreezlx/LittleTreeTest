@@ -7,13 +7,21 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment"
     android:orientation="vertical"
+    android:background="#888888"
     >
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <com.example.littletreetest.customview.VerifyCodeView
+        android:id="@+id/verify_code_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_gravity="center"
+        android:layout_marginTop="80dp"
         />
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rv"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        />-->
 
 </LinearLayout>

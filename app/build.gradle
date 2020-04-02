@@ -39,4 +39,6 @@ dependencies {
     //UI !!!
     //recyclerview
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.1'
+    //popup
+    api 'com.github.razerdp:BasePopup:2.2.2.2'
 }
