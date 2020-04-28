@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:width="15dp"
+        android:height="15dp"
+        android:drawable="@drawable/triangle_round"
+
+        />
+
+
+    <item
+        android:width="5dp"
+        android:height="4dp"
+        android:drawable="@drawable/icon_j"
+        android:left="9dp"
+        android:right="2dp"
+        android:top="7dp"
+        android:bottom="3dp"
+
+        />
+
+
+
+</layer-list>

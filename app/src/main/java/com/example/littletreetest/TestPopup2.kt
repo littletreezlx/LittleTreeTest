@@ -1,29 +1,17 @@
 package com.example.littletreetest
 
 import android.content.Context
-import android.view.Gravity
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import razerdp.basepopup.BasePopupWindow
 
 
-class TestPopup(context: Context?) : BasePopupWindow(context) {
+class TestPopup2(context: Context?) : BasePopupWindow(context) {
 
     override fun onCreateContentView(): View {
-        return createPopupById(R.layout.test_popup)
+        return createPopupById(R.layout.test_popup_2)
     }
-
-    override fun onViewCreated(contentView: View?) {
-        val popup = TestPopup2(context)
-        popup.popupGravity = Gravity.CENTER
-
-//        popup.showPopupWindow(R.id.tv_desc)
-//        showToast("onViewCreated")
-    }
-
-
-
 
 
     override fun onCreateShowAnimation(): Animation? {
