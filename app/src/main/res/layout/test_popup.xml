@@ -5,29 +5,15 @@
     android:layout_height="150dp"
     android:layout_gravity="center"
     android:background="@color/white"
-    android:orientation="vertical"
+    android:orientation="vertical">
 
->
 
-    <ImageView
+    <Button
+        android:id="@+id/btn_show_toast"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:text="show toast"
         android:layout_gravity="center"
-        android:textSize="16dp"
-        android:background="@drawable/bg_single_selected"
-        android:layout_marginTop="30dp"
-        />
-
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textSize="16dp"
-        android:background="@drawable/bg_single_selected"
-        android:layout_marginTop="30dp"
         />
 
 

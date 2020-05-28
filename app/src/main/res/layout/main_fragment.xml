@@ -7,21 +7,37 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment"
     android:orientation="vertical"
-    android:background="#888888"
+    android:background="#ffffff"
     >
 
-    <com.example.littletreetest.customview.VerifyCodeView
-        android:id="@+id/verify_code_view"
+    <TextView
+        android:id="@+id/tv_all_str"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-       android:layout_gravity="center"
-        android:layout_marginTop="80dp"
+        android:text="ALL"
+        android:textSize="30dp"
+        android:textColor="#000000"
         />
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/rv"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        />-->
+
+    <TextView
+        android:id="@+id/tv_sub_str"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUB"
+        android:textSize="30dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#000000"
+
+        />
+
+
+    <Button
+        android:id="@+id/btn_show_toast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:layout_gravity="center"
+        />
 
 </LinearLayout>
