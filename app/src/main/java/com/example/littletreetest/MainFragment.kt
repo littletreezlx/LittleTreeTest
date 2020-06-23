@@ -47,12 +47,11 @@ class MainFragment : Fragment() {
             val random = Random.nextInt(100)
             vm.updateStr(random.toString())
         }
-        vm._AllStr.observe(viewLifecycleOwner, Observer {
-            tv_all_str.text = it
-        })
         vm.subStr.observe(viewLifecycleOwner, Observer {
-            tv_sub_str.text = it
+            tv_all_str.text = it
+            tv_sub_str.text = it + vm.AllStr.value
         })
+
 
 
 
