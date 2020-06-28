@@ -17,7 +17,6 @@ import timber.log.Timber
 class ScrollViewAndViewPager2Fragment : BaseFragment() {
 
 
-
     override val layoutId = R.layout.fragment_scrollview_and_viewpager2
 
     private lateinit var binding: FragmentScrollviewAndViewpager2Binding
@@ -35,7 +34,7 @@ class ScrollViewAndViewPager2Fragment : BaseFragment() {
         setClicks()
     }
 
-    private fun initTopFragment(){
+    private fun initTopFragment() {
 //        childFragmentManager.beginTransaction().add(R.id.fragment_top, TopFragment()).commit()
     }
 
@@ -49,63 +48,70 @@ class ScrollViewAndViewPager2Fragment : BaseFragment() {
 
 
     private fun initViewPager() {
+//        binding.rvTopTitle.post {
+//            val fragmentHeight = ScreenUtils.getAppScreenHeight() - binding.rvTopTitle.height
+//            val lp = binding.vpRoleCard.layoutParams
+//            lp.height = fragmentHeight
+//            binding.vpRoleCard.layoutParams = lp
+//        }
+//
+//
+//        val viewPagerAdapter = RoleCardViewPagerAdapter(requireActivity())
+//        binding.vpRoleCard.run {
+//            adapter = viewPagerAdapter
+//            isUserInputEnabled = false
+//            (getChildAt(0) as RecyclerView).setItemViewCacheSize(viewPagerAdapter.itemCount)
+//        }
     }
 
     private fun setClicks() {
-        view?.post {
-//            Timber.d(ScreenUtils.getAppScreenHeight().toString())
-//            Timber.d(binding.header.height.toString())
-//            Timber.d(binding.rvTopTitle.height.toString())
-//            val fragmentHeight = ScreenUtils.getAppScreenHeight() - binding.header.height - binding.rvTopTitle.height
-//            Timber.d(fragmentHeight.toString())
-
-            val fragmentHeight = ScreenUtils.getAppScreenHeight()
-
-            val lp = binding.layoutFragmentContainer.layoutParams
+        binding.rvTopTitle.post {
+            val fragmentHeight = ScreenUtils.getAppScreenHeight() - binding.rvTopTitle.height
+            val lp = binding.vpRoleCard.layoutParams
             lp.height = fragmentHeight
-            binding.layoutFragmentContainer.layoutParams = lp
+            binding.vpRoleCard.layoutParams = lp
         }
 
-        childFragmentManager.beginTransaction().replace(R.id.layout_fragment_container, BlankAFragment()).commit()
+        childFragmentManager.beginTransaction().replace(R.id.vp_role_card, BlankAFragment()).commit()
         topTitleAdapter.setSingleItemClickListener {
             if (it == 0){
-                childFragmentManager.beginTransaction().replace(R.id.layout_fragment_container, BlankAFragment()).commit()
+                childFragmentManager.beginTransaction().replace(R.id.vp_role_card, BlankAFragment()).commit()
             }else{
-                childFragmentManager.beginTransaction().replace(R.id.layout_fragment_container, BlankBFragment()).commit()
+                childFragmentManager.beginTransaction().replace(R.id.vp_role_card, BlankBFragment()).commit()
             }
+//            binding.vpRoleCard.currentItem = it
         }
     }
 
 
+    class RoleCardViewPagerAdapter(fragmentActivity: FragmentActivity) :
+        FragmentStateAdapter(fragmentActivity) {
 
-//    class RoleCardViewPagerAdapter(fragmentActivity: FragmentActivity) :
-//        FragmentStateAdapter(fragmentActivity) {
-//
-//        companion object {
-//            const val PAGE_ROLE_BACKGROUND = 0
-//            const val PAGE_ROLE_ABILITY = 1
-//        }
-//
-//        val fragments: SparseArray<BaseFragment> = SparseArray()
-//
-//        init {
-//            fragments.put(
-//                PAGE_ROLE_BACKGROUND,
-//                BlankAFragment()
-//            )
-//            fragments.put(
-//                PAGE_ROLE_ABILITY,
-//                BlankBFragment()
-//            )
-//        }
-//
-//        override fun getItemCount(): Int {
-//            return fragments.size()
-//        }
-//
-//        override fun createFragment(position: Int): Fragment {
-//            return fragments[position]
-//        }
-//    }
+        companion object {
+            const val PAGE_ROLE_BACKGROUND = 0
+            const val PAGE_ROLE_ABILITY = 1
+        }
+
+        val fragments: SparseArray<BaseFragment> = SparseArray()
+
+        init {
+            fragments.put(
+                PAGE_ROLE_BACKGROUND,
+                BlankAFragment()
+            )
+            fragments.put(
+                PAGE_ROLE_ABILITY,
+                BlankBFragment()
+            )
+        }
+
+        override fun getItemCount(): Int {
+            return fragments.size()
+        }
+
+        override fun createFragment(position: Int): Fragment {
+            return fragments[position]
+        }
+    }
 }
 
