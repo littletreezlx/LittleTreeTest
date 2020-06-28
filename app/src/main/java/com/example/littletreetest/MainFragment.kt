@@ -27,8 +27,7 @@ class MainFragment : Fragment() {
     private val treeAdapter: NodeTreeAdapter =
         NodeTreeAdapter()
 
-
-
+    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,9 +50,6 @@ class MainFragment : Fragment() {
             tv_all_str.text = it
             tv_sub_str.text = it + vm.AllStr.value
         })
-
-
-
 
         rv_list.run {
             setLayoutManager(LinearLayoutManager(context))
@@ -80,6 +76,7 @@ class MainFragment : Fragment() {
         second2.isExpanded = true
         return res
     }
+
 }
 
 

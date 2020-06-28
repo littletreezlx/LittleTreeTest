@@ -2,17 +2,24 @@ package com.example.littletreetest
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.littletreetest.base.BaseActivity
+import com.example.littletreetest.test.coordinatorLayout.CoordinatorLayoutFragment
+import com.example.littletreetest.test.scrollviewandviewpager2.ScrollViewAndViewPager2Fragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initView(savedInstanceState: Bundle?) {
         setContentView(R.layout.main_activity)
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainFragment.newInstance())
-                .commitNow()
-        }
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, ScrollViewAndViewPager2Fragment())
+            .commitNow()
+
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.container, CoordinatorLayoutFragment())
+//            .commitNow()
+    }
+
+    override fun initInjector() {
     }
 
 }
