@@ -29,7 +29,7 @@ class BlankAFragment : BaseFragment() {
         binding.rvContent.run {
             layoutManager = LinearLayoutManager(context)
             adapter = contentAdapter
-//            setHasFixedSize(true)
+            setHasFixedSize(true)
         }
         val testList = mutableListOf<String>()
         for (i in 0..5){

@@ -65,19 +65,19 @@ class ScrollViewAndViewPager2Fragment : BaseFragment() {
     }
 
     private fun setClicks() {
-        binding.rvTopTitle.post {
-            val fragmentHeight = ScreenUtils.getAppScreenHeight() - binding.rvTopTitle.height
-            val lp = binding.vpRoleCard.layoutParams
-            lp.height = fragmentHeight
-            binding.vpRoleCard.layoutParams = lp
-        }
+//        binding.rvTopTitle.post {
+//            val fragmentHeight = ScreenUtils.getAppScreenHeight() - binding.rvTopTitle.height
+//            val lp = binding.fragmentContainer.layoutParams
+//            lp.height = fragmentHeight
+//            binding.fragmentContainer.layoutParams = lp
+//        }
 
-        childFragmentManager.beginTransaction().replace(R.id.vp_role_card, BlankAFragment()).commit()
+        childFragmentManager.beginTransaction().replace(R.id.fragment_container, BlankAFragment()).commit()
         topTitleAdapter.setSingleItemClickListener {
             if (it == 0){
-                childFragmentManager.beginTransaction().replace(R.id.vp_role_card, BlankAFragment()).commit()
+                childFragmentManager.beginTransaction().replace(R.id.fragment_container, BlankAFragment()).commit()
             }else{
-                childFragmentManager.beginTransaction().replace(R.id.vp_role_card, BlankBFragment()).commit()
+                childFragmentManager.beginTransaction().replace(R.id.fragment_container, BlankBFragment()).commit()
             }
 //            binding.vpRoleCard.currentItem = it
         }
