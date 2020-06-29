@@ -12,6 +12,7 @@ import com.blankj.utilcode.util.ScreenUtils
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentScrollviewAndViewpager2Binding
+import com.example.littletreetest.showToast
 import timber.log.Timber
 
 class ScrollViewAndViewPager2Fragment : BaseFragment() {
@@ -55,9 +56,10 @@ class ScrollViewAndViewPager2Fragment : BaseFragment() {
 //            binding.vpRoleCard.layoutParams = lp
 //        }
 //
-//
+
+
 //        val viewPagerAdapter = RoleCardViewPagerAdapter(requireActivity())
-//        binding.vpRoleCard.run {
+//        binding.fragmentContainer.run {
 //            adapter = viewPagerAdapter
 //            isUserInputEnabled = false
 //            (getChildAt(0) as RecyclerView).setItemViewCacheSize(viewPagerAdapter.itemCount)
@@ -79,8 +81,16 @@ class ScrollViewAndViewPager2Fragment : BaseFragment() {
             }else{
                 childFragmentManager.beginTransaction().replace(R.id.fragment_container, BlankBFragment()).commit()
             }
-//            binding.vpRoleCard.currentItem = it
+//            binding.fragmentContainer.currentItem = it
         }
+
+//        binding.header.setOnClickListener {
+//            showToast("hello1")
+//        }
+//        binding.header2.setOnClickListener {
+//            showToast("hello2")
+//        }
+
     }
 
 

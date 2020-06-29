@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.widget.NestedScrollView;
 
+import com.google.android.material.appbar.AppBarLayout;
+
 public class ScrollViewBehavior extends CoordinatorLayout.Behavior<NestedScrollView> {
 
     public ScrollViewBehavior() {
@@ -21,7 +23,7 @@ public class ScrollViewBehavior extends CoordinatorLayout.Behavior<NestedScrollV
 
     @Override
     public boolean layoutDependsOn(CoordinatorLayout parent, NestedScrollView child, View dependency) {
-        return dependency instanceof TextView;
+        return dependency instanceof AppBarLayout;
     }
 
     @Override
