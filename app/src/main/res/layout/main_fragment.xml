@@ -1,49 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment"
-    android:orientation="vertical"
-    android:background="#ffffff"
-    >
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_all_str"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ALL"
-        android:textSize="30dp"
-        android:textColor="#000000"
-        />
-
-
-    <TextView
-        android:id="@+id/tv_sub_str"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SUB"
-        android:textSize="30dp"
-        android:layout_marginTop="30dp"
-        android:textColor="#000000"
-
-        />
-
-
-    <Button
-        android:id="@+id/btn_show_toast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"
-        android:layout_gravity="center"
-        />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_list"
+    <fragment
+        android:id="@+id/fragment_nav_host_main"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_main" />
 
-</LinearLayout>
+</FrameLayout>

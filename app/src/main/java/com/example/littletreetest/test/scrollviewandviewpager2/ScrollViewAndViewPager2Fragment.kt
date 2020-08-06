@@ -6,14 +6,10 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.blankj.utilcode.util.ScreenUtils
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentScrollviewAndViewpager2Binding
-import com.example.littletreetest.showToast
-import timber.log.Timber
 
 class ScrollViewAndViewPager2Fragment : BaseFragment() {
 
