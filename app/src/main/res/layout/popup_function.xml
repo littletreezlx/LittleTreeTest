@@ -1,33 +1,14 @@
-<com.mixu.jingtu.common.component.ShadowLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="80dp"
-    android:layout_height="60dp"
-    android:layout_gravity="center"
-    android:background="@color/white"
-    app:shadow_blur="6dp"
-    app:shadow_color="#28000000"
-    app:shadow_dx="0dp"
-    app:shadow_dy="3dp"
-    app:shadow_radius="10dp"
-    app:test="hhhhhhh">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_function"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
-
-<!--    <TextView-->
-<!--        android:id="@+id/tv_content"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:gravity="center"-->
-<!--        android:singleLine="true"-->
-<!--        android:text="正在使用"-->
-<!--        android:textColor="#3F3D56"-->
-<!--        android:textSize="12dp" />-->
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
-</com.mixu.jingtu.common.component.ShadowLayout>
+</com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout>

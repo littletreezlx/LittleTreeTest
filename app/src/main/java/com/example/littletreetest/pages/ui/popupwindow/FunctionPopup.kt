@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages
+package com.example.littletreetest.pages.ui.popupwindow
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -26,7 +26,10 @@ class FunctionPopup(context: Context?) : PopupWindow() {
 
     private fun getView(context: Context?): View {
         val popupView = LayoutInflater.from(context).inflate(R.layout.popup_function, null)
-        functionAdapter = FunctionAdapter(mutableListOf())
+        functionAdapter =
+            FunctionAdapter(
+                mutableListOf()
+            )
         popupView.findViewById<RecyclerView>(R.id.rv_function).run {
             layoutManager = LinearLayoutManager(context)
             adapter =functionAdapter
