@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">LittleTreeTest</string>
+
+    <string name="behavior_sample_header">com.example.littletreetest.test.coordinatorLayout.SampleHeaderBehavior</string>
+
+    <string name="behavior_recyclerview">com.example.littletreetest.test.coordinatorLayout.RecyclerViewBehavior</string>
+
+    <string name="behavior_linearlayout">com.example.littletreetest.test.coordinatorLayout.LinearLayoutBehavior</string>
+
+    <string name="behavior_nestedscrollview">com.example.littletreetest.test.coordinatorLayout.ScrollViewBehavior</string>
+
+
+    <string name="behavior_view">com.example.littletreetest.test.coordinatorLayout.ViewBehavior</string>
+
 </resources>

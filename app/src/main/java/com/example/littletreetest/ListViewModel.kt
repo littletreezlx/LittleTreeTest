@@ -1,7 +1,9 @@
 package com.example.littletreetest
 
+import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
+import kotlin.properties.Delegates
 
 class ListViewModel : ViewModel() {
 
@@ -17,7 +19,10 @@ class ListViewModel : ViewModel() {
     }
 
 
-    val _AllStr = MutableLiveData<String>()
+    private val _AllStr = MutableLiveData<String>()
+
+    val AllStr: LiveData<String> = _AllStr
+
 
 //    val subStr = _AllStr.map { it ->
 //        it + "sub"
@@ -31,13 +36,10 @@ class ListViewModel : ViewModel() {
 //    }
 
 
-    val subStr: LiveData<String> = _AllStr.switchMap {
-//        liveData {
-//            emit(it + "sub")
-//        }
-//
-        MutableLiveData(it + "sub")
+    val subStr: LiveData<String> = _AllStr.map {
+        it + "sub"
     }
+
 
     fun updateStr(str: String) {
         _AllStr.value = str

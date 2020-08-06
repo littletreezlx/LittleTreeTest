@@ -2,6 +2,7 @@ package com.example.littletreetest
 
 import android.app.Application
 import android.content.Context
+import timber.log.Timber
 
 class MyApp : Application(){
 
@@ -12,5 +13,6 @@ class MyApp : Application(){
     override fun onCreate() {
         super.onCreate()
         context = this
+        Timber.plant(Timber.DebugTree())
     }
 }
