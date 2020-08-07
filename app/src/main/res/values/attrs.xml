@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--阴影-->
+    <declare-styleable name="ShadowFrameLayout">
+        <attr name="shadow_color" format="color" />
+        <attr name="fill_color" format="color" />
+        <attr name="shadow_radius" format="dimension" />
+        <attr name="shadow_blur" format="dimension" />
+        <attr name="shadow_dx" format="dimension" />
+        <attr name="shadow_dy" format="dimension" />
+        <attr name="test" format="string" />
+    </declare-styleable>
+
+
+    <!-- 加号 -->
+    <declare-styleable name="PlusView">
+        <attr name="stroke_color" format="color" />
+        <attr name="stroke_width" format="dimension" />
+    </declare-styleable>
+
+
+
+    <!--阴影-->
+    <declare-styleable name="AnglePopupLayout">
+        <attr name="apl_radius" format="dimension" />
+        <attr name="apl_bg_color" format="color" />
+
+        <attr name="apl_stroke_width" format="dimension" />
+        <attr name="apl_stroke_color" format="color" />
+
+        <attr name="apl_angle_orientation" format="integer" />
+        <attr name="apl_angle_x" format="dimension" />
+        <attr name="apl_angle_height" format="dimension" />
+        <attr name="apl_angle_width" format="dimension" />
+
+        <attr name="apl_shadow_blur" format="dimension" />
+        <attr name="apl_shadow_dx" format="dimension" />
+        <attr name="apl_shadow_dy" format="dimension" />
+        <attr name="apl_shadow_color" format="color" />
+
+    </declare-styleable>
+
+
+
+</resources>

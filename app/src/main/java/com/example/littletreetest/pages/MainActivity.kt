@@ -12,7 +12,8 @@ class MainActivity : BaseActivity() {
 //            .replace(R.id.container, ScrollViewAndViewPager2Fragment())
             .replace(
                 R.id.container,
-                MainFragment()
+//                MainFragment()
+                TestFragment()
             )
             .commitNow()
 
