@@ -1,0 +1,28 @@
+<com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:apl_angle_orientation="1"
+    app:apl_angle_x="265dp"
+    app:apl_radius="10dp"
+    app:apl_shadow_blur="10dp"
+    app:apl_shadow_color="#000000"
+    app:apl_stroke_color="#4F707070"
+    app:apl_stroke_width="0.5dp"
+    app:test="hhhhhhh">
+
+<!--    app:apl_shadow_color="#28000000"-->
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_story_level"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp" />
+
+
+</com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout >

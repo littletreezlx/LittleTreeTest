@@ -34,7 +34,6 @@ abstract class BaseFragment : Fragment() {
 //    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         Timber.d("Lifecycle: ${javaClass.simpleName}___onCreate")
         super.onCreate(savedInstanceState)
         onBackPressed?.let {
@@ -43,7 +42,6 @@ abstract class BaseFragment : Fragment() {
 //                it.invoke()
 //            }
         }
-
         (activity as BaseActivity).currentFragment = WeakReference(this)
     }
 

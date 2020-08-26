@@ -1,5 +1,6 @@
 package com.example.littletreetest.pages
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -7,7 +8,9 @@ import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentTestBinding
 import com.example.littletreetest.pages.ui.popupwindow.FunctionPopup
+import com.example.littletreetest.pages.ui.popupwindow.StoryFilterPopup
 import com.mixu.jingtu.common.ext.dp2px
+import timber.log.Timber
 
 class TestFragment : BaseFragment() {
 
@@ -23,21 +26,9 @@ class TestFragment : BaseFragment() {
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentTestBinding.bind(view)
 
-
-        binding.btnTest.setOnClickListener {
-            val popup =
-                FunctionPopup(
-                    context
-                )
-            popup.setFunctionList(
-                mutableListOf(
-                    FunctionPopup.FunctionItem("编辑") {},
-                    FunctionPopup.FunctionItem("删除") {},
-                    FunctionPopup.FunctionItem("哈哈") {}
-                ))
-            popup.showAsDropDown(
-                it, dp2px(10f), dp2px(10f), Gravity.LEFT or Gravity.BOTTOM
-            )
+        binding.tvTest.setOnClickListener {
+            val popup = StoryFilterPopup(requireContext())
+            popup.show(it, dp2px(220f) , 0)
         }
 
     }

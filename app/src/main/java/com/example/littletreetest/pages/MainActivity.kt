@@ -3,6 +3,7 @@ package com.example.littletreetest.pages
 import android.os.Bundle
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseActivity
+import com.example.littletreetest.pages.ui.progressbar.ProgressBarFragment
 
 class MainActivity : BaseActivity() {
 
@@ -13,7 +14,8 @@ class MainActivity : BaseActivity() {
             .replace(
                 R.id.container,
 //                MainFragment()
-                TestFragment()
+//                TestFragment()
+            ProgressBarFragment()
             )
             .commitNow()
 

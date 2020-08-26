@@ -13,7 +13,9 @@
         >
 
 
-        <activity android:name=".pages.MainActivity">
+        <activity android:name=".pages.MainActivity"
+            android:launchMode="singleTask"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
