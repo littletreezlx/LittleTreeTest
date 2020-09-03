@@ -6,15 +6,25 @@
         android:drawable="@drawable/pgs_bar_bg" />
     <!--pb进度条样式-->
 
+<!--    <item android:id="@android:id/secondaryProgress">-->
+<!--        <scale android:scaleWidth="100%">-->
+<!--            <shape>-->
+<!--                <corners android:radius="9dp" />-->
+<!--                <solid android:color="#DAC292" />-->
+<!--            </shape>-->
+<!--        </scale>-->
+<!--    </item>-->
+
+
     <item android:id="@android:id/secondaryProgress">
-        <scale android:scaleWidth="100%">
+        <clip >
+
             <shape>
                 <corners android:radius="9dp" />
-                <solid android:color="#DAC292" />
-            </shape>
-        </scale>
-    </item>
 
+            </shape>
+        </clip>
+    </item>
 
     <item android:id="@android:id/progress">
         <scale
