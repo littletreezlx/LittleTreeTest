@@ -33,7 +33,7 @@ class FreeFragment : BaseFragment() {
         binding = FragmentFreeBinding.bind(view)
 
         freeVM.test.observe(viewLifecycleOwner, Observer {
-           binding.tvTest.text = it
+           binding.tvTest.text = it.name
         })
 
         binding.tvTest.setOnClickListener {
