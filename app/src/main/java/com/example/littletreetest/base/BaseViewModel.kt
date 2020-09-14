@@ -9,6 +9,9 @@ open class BaseViewModel : ViewModel() {
 
 
 
+
+
+
 //    val loginManager: LoginManager = ComponentHolder.appComponent.loginManager
 //
 //    val spUtil = ComponentHolder.appComponent.spUtil
