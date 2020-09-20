@@ -1,11 +1,14 @@
 package com.example.littletreetest.pages.free
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.mixu.jingtu.common.base.BaseViewModel
 
-class FreeViewModel(private val savedState: SavedStateHandle) : BaseViewModel() {
+
+class FreeViewModel @ViewModelInject constructor(@Assisted  private val savedState: SavedStateHandle) : BaseViewModel() {
 
     private val SAVED_STATE_KEY = "key"
 
