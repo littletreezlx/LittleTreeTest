@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
 
 /**
@@ -20,18 +22,14 @@ import java.lang.ref.WeakReference
  * createTime：2019/4/18
  * describe：
  */
-abstract class BaseActivity: AppCompatActivity()
+@AndroidEntryPoint
+open class BaseActivity: AppCompatActivity()
     , OnBackPressedDispatcherOwner
 {
 
+    @Inject
+    lateinit var spUtil: SpUtil
 
-
-//    private var loadingDialog: LoadingDialogTest = LoadingDialogTest.getInstance()
-
-
-    abstract fun initView(savedInstanceState: Bundle?)
-
-    protected abstract fun initInjector()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         //todo pad临时关适配
@@ -43,9 +41,8 @@ abstract class BaseActivity: AppCompatActivity()
         super.onCreate(savedInstanceState)
 //        initActivityComponent()
         requestPermissions()
-        initView(savedInstanceState)
 //        EventBus.getDefault().register(this)
-        initInjector()
+        Timber.d(spUtil.toString())
 //        if (!NetworkUtils.isConnected()) {
 //            showNoNet()
 //        }
@@ -55,6 +52,7 @@ abstract class BaseActivity: AppCompatActivity()
 //            onActivityBackPressed()
 //        }
     }
+
 
 
     //必要权限申请

@@ -1,2 +1,3 @@
+include ':common_base'
 include ':app'
 rootProject.name='LittleTreeTest'

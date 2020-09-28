@@ -1,40 +1,46 @@
-/*
- * Designed and developed by 2020 skydoves (Jaewoong Eum)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.example.littletreetest.di
 
-
+import android.app.Application
+import android.content.Context
+import com.example.littletreetest.base.SpUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.android.components.ApplicationComponent
-import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
+
 
 @Module
 @InstallIn(ApplicationComponent::class)
+// 这里使用了 ApplicationComponent，因此 NetworkModule 绑定到 Application 的生命周期。
 object NetworkModule {
 
 
-  @Provides
-  @Singleton
-  fun provideOkhttp(): OkHttpClient {
-    return OkHttpClient.Builder().build()
-  }
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .build()
+    }
 
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl("https://api.github.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+
+    @Singleton
+    @Provides
+    fun provideSpUtil(@ApplicationContext context: Context): SpUtil {
+        return SpUtil(context)
+    }
 }
