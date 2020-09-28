@@ -14,7 +14,6 @@ open class BaseViewModel : ViewModel() {
 
 //    val loginManager: LoginManager = ComponentHolder.appComponent.loginManager
 //
-//    val spUtil = ComponentHolder.appComponent.spUtil
 //
 //    val appVM by lazy {
 //        ViewModelProvider(App.appContext as ViewModelStoreOwner).get(AppViewModel::class.java)

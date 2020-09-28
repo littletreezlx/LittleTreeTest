@@ -13,11 +13,20 @@
         <action
             android:id="@+id/action_mainFragment_to_testFragment"
             app:destination="@id/testFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_freeFragment"
+            app:destination="@id/freeFragment" />
     </fragment>
+
+
     <fragment
         android:id="@+id/testFragment"
         android:name="com.example.littletreetest.pages.TestFragment"
         android:label="TestFragment" />
+    <fragment
+        android:id="@+id/freeFragment"
+        android:name="com.example.littletreetest.pages.free.FreeFragment"
+        android:label="FreeFragment" />
 
 
 </navigation>

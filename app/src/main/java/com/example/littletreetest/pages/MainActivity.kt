@@ -9,24 +9,21 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        supportFragmentManager.beginTransaction()
-//            .replace(R.id.container, ScrollViewAndViewPager2Fragment())
-            .replace(
-                R.id.container,
-//                MainFragment()
-//                TestFragment()
-                FreeFragment()
-            )
-            .commitNow()
+//        supportFragmentManager.beginTransaction()
+//            .replace(
+//                R.id.container,
+//                FreeFragment()
+//            )
+//            .commitNow()
 
-        Timber.d(spUtil.toString())
+
     }
 
 }

@@ -32,11 +32,11 @@ import javax.inject.Singleton
 object RepositoryModule {
 
 
-  @Provides
-  @ActivityRetainedScoped
-  fun provideFreeRepo(okHttpClient: OkHttpClient): FreeRepo {
-    return FreeRepo(okHttpClient)
-  }
+//  @Provides
+//  @ActivityRetainedScoped
+//  fun provideFreeRepo(okHttpClient: OkHttpClient): FreeRepo {
+//    return FreeRepo(okHttpClient)
+//  }
 
 
 }

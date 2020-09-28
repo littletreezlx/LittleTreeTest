@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.example.littletreetest.R
-import com.example.littletreetest.TextViewAutoScrollUtil
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.node.FirstNode
 import com.example.littletreetest.node.NodeTreeAdapter
@@ -25,7 +24,7 @@ class NodeAdapterFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.main_fragment, container, false)
+        val view = inflater.inflate(R.layout.fragment_main, container, false)
 
         return view
     }

@@ -18,8 +18,6 @@ import kotlin.reflect.KClass
 abstract class BaseFragment : Fragment() {
 
 
-
-
     var backCallBack: OnBackPressedCallback? = null
 
 

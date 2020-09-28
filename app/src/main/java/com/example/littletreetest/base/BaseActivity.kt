@@ -17,18 +17,10 @@ import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 
-/**
- * author ：lemon
- * createTime：2019/4/18
- * describe：
- */
-@AndroidEntryPoint
+
 open class BaseActivity: AppCompatActivity()
     , OnBackPressedDispatcherOwner
 {
-
-    @Inject
-    lateinit var spUtil: SpUtil
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +34,6 @@ open class BaseActivity: AppCompatActivity()
 //        initActivityComponent()
         requestPermissions()
 //        EventBus.getDefault().register(this)
-        Timber.d(spUtil.toString())
 //        if (!NetworkUtils.isConnected()) {
 //            showNoNet()
 //        }

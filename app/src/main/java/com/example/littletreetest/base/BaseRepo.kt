@@ -9,7 +9,6 @@ abstract class BaseRepo{
 //
 //    val loginManager: LoginManager = ComponentHolder.appComponent.loginManager
 //
-//    val spUtil = ComponentHolder.appComponent.spUtil
 //
 //
 //    fun toTextRequestBody(value: String): RequestBody {

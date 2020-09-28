@@ -1,8 +1,6 @@
 package com.example.littletreetest.di
 
-import android.app.Application
 import android.content.Context
-import com.example.littletreetest.base.SpUtil
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,10 +35,4 @@ object NetworkModule {
             .build()
     }
 
-
-    @Singleton
-    @Provides
-    fun provideSpUtil(@ApplicationContext context: Context): SpUtil {
-        return SpUtil(context)
-    }
 }
