@@ -22,8 +22,6 @@ class TestFragment : BaseFragment() {
 
     lateinit var binding: FragmentTestBinding
 
-    @Inject
-    lateinit var spUtil: SpUtil
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentTestBinding.bind(view)
@@ -32,7 +30,5 @@ class TestFragment : BaseFragment() {
             val popup = StoryFilterPopup(requireContext())
             popup.show(it, dp2px(220f) , 0)
         }
-
-        Timber.d(spUtil.toString())
     }
 }

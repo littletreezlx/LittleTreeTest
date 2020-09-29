@@ -3,9 +3,9 @@ package com.example.littletreetest.pages.free
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
+import com.example.littletreetest.databinding.FragmentFree2Binding
 import com.example.littletreetest.databinding.FragmentFreeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -13,26 +13,27 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class FreeFragment : BaseFragment() {
+class FreeFragment2 : BaseFragment() {
 
 
-    override val layoutId = R.layout.fragment_free
+    override val layoutId = R.layout.fragment_free2
 
-    lateinit var binding: FragmentFreeBinding
+    lateinit var binding: FragmentFree2Binding
 
     private val freeVM: FreeViewModel by activityViewModels()
 
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
-        binding = FragmentFreeBinding.bind(view)
+        binding = FragmentFree2Binding.bind(view)
         binding.vm = freeVM
         binding.lifecycleOwner = this
 
+//        freeVM.test.observe(viewLifecycleOwner) {
+//            binding.tvTest.text = it
+//        }
+
         binding.tvTest.setOnClickListener {
-            freeVM.updateFree()
-        }
-        binding.btnJump.setOnClickListener {
-            findNavController().navigate(R.id.action_freeFragment_to_freeFragment2)
+            freeVM.getFree()
         }
 
     }

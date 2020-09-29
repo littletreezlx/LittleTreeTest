@@ -1,6 +1,4 @@
-package com.example.littletreetest.node;
-
-import android.view.View;
+package com.example.littletreetest.pages.node;
 
 
 import com.chad.library.adapter.base.entity.node.BaseNode;

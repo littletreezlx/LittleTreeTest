@@ -8,6 +8,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.doFailure
 import com.doSuccess
+import com.example.littletreetest.usecase.GetFreeUseCase
+import com.example.littletreetest.usecase.UpdateFreeUseCase
 import com.mixu.jingtu.common.base.BaseViewModel
 import com.mixu.jingtu.common.ext.showToast
 import kotlinx.coroutines.flow.catch
@@ -15,24 +17,24 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 
 class FreeViewModel @ViewModelInject constructor(
     private val getFreeUseCase: GetFreeUseCase,
+    private val updateFreeUseCase: UpdateFreeUseCase,
     @Assisted private val savedState: SavedStateHandle
 ) : BaseViewModel() {
 
     private val SAVED_STATE_KEY = "key"
 
-    private val _test = MutableLiveData<String>().apply {
-        savedState.get<String>(SAVED_STATE_KEY)?.let {
-            if (it.isNotEmpty()) {
-                value = it
-            }
-        }
-    }
-
+    private val _test = MutableLiveData<String>()
+//        .apply {
+//        savedState.get<String>(SAVED_STATE_KEY)?.let {
+//            if (it.isNotEmpty()) {
+//                value = it
+//            }
+//        }
+//    }
 
     val test: LiveData<String> = _test
 
@@ -51,9 +53,32 @@ class FreeViewModel @ViewModelInject constructor(
                 .collectLatest {
                     it.doSuccess {
                         _test.value = it.name
+                        showToast("doSuccess: ${it.name}___${Thread.currentThread().name}")
                     }
                     it.doFailure { errorMsg ->
-                        showToast("搜索失败: $errorMsg")
+                    }
+                }
+        }
+    }
+
+
+    fun updateFree() {
+        viewModelScope.launch {
+            updateFreeUseCase.invoke()
+                .onStart {
+                }
+                .catch {
+                    showToast("失败: catch")
+                }
+                .onCompletion {
+
+                }
+                .collectLatest {
+                    it.doSuccess {
+                        _test.value = it.name
+                        showToast("doSuccess: ${it.name}___${Thread.currentThread().name}")
+                    }
+                    it.doFailure { errorMsg ->
                     }
                 }
         }

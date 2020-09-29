@@ -26,7 +26,15 @@
     <fragment
         android:id="@+id/freeFragment"
         android:name="com.example.littletreetest.pages.free.FreeFragment"
-        android:label="FreeFragment" />
+        android:label="FreeFragment" >
+        <action
+            android:id="@+id/action_freeFragment_to_freeFragment2"
+            app:destination="@id/freeFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/freeFragment2"
+        android:name="com.example.littletreetest.pages.free.FreeFragment2"
+        android:label="FreeFragment2" />
 
 
 </navigation>

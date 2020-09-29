@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
-import com.example.littletreetest.node.FirstNode
-import com.example.littletreetest.node.NodeTreeAdapter
-import com.example.littletreetest.node.SecondNode
-import com.example.littletreetest.node.ThirdNode
+import com.example.littletreetest.pages.node.FirstNode
+import com.example.littletreetest.pages.node.NodeTreeAdapter
+import com.example.littletreetest.pages.node.SecondNode
+import com.example.littletreetest.pages.node.ThirdNode
 
 class NodeAdapterFragment : BaseFragment() {
 

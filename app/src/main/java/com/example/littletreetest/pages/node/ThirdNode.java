@@ -1,4 +1,4 @@
-package com.example.littletreetest.node;
+package com.example.littletreetest.pages.node;
 
 import com.chad.library.adapter.base.entity.node.BaseNode;
 

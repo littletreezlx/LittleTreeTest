@@ -1,14 +1,8 @@
-package com.example.littletreetest.node;
+package com.example.littletreetest.pages.node;
 
 
 import com.chad.library.adapter.base.BaseNodeAdapter;
 import com.chad.library.adapter.base.entity.node.BaseNode;
-import com.example.littletreetest.node.FirstNode;
-import com.example.littletreetest.node.FirstProvider;
-import com.example.littletreetest.node.SecondNode;
-import com.example.littletreetest.node.SecondProvider;
-import com.example.littletreetest.node.ThirdNode;
-import com.example.littletreetest.node.ThirdProvider;
 
 import org.jetbrains.annotations.NotNull;
 
