@@ -28,10 +28,6 @@ class FreeFragment2 : BaseFragment() {
         binding.vm = freeVM
         binding.lifecycleOwner = this
 
-//        freeVM.test.observe(viewLifecycleOwner) {
-//            binding.tvTest.text = it
-//        }
-
         binding.tvTest.setOnClickListener {
             freeVM.getFree()
         }

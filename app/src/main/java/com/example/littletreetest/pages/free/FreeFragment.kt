@@ -1,5 +1,8 @@
 package com.example.littletreetest.pages.free
 
+import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -34,6 +37,16 @@ class FreeFragment : BaseFragment() {
         binding.btnJump.setOnClickListener {
             findNavController().navigate(R.id.action_freeFragment_to_freeFragment2)
         }
+
+//        val endX = textView.paint.textSize * textView.text.length
+//        val linearGradient = LinearGradient(
+//            0f, 0f, endX, 0f,
+//            Color.parseColor("#FFFF68FF"),
+//            Color.parseColor("#FFFED732"),
+//            Shader.TileMode.CLAMP
+//        )
+//        textView.paint.shader = linearGradient
+//        textView.invalidate()
 
     }
 

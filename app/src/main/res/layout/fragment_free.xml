@@ -37,5 +37,15 @@
             android:textSize="30dp"
             android:gravity="center" />
 
+        <TextView
+            android:id="@+id/tv_gradient"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="挑战失败"
+            android:textSize="30dp"
+            android:gravity="center"
+            android:paddingBottom="30dp"
+           />
+
     </LinearLayout>
 </layout>
