@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -17,35 +18,48 @@
         android:gravity="center"
         android:orientation="vertical">
 
+        <include
+            android:id="@+id/include_test"
+            layout="@layout/include_free_tv"
+            bind:vm="@{vm}" />
+
         <TextView
             android:id="@+id/tv_test"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="@{vm.test}"
-            android:textSize="30dp"
+            android:background="@drawable/background_textview_downline"
             android:gravity="center"
             android:paddingBottom="30dp"
-            android:background="@drawable/background_textview_downline" />
+            android:text="@{vm.test}"
+            android:textSize="30dp" />
 
 
         <Button
             android:id="@+id/btn_jump"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="jump"
             android:layout_marginTop="30dp"
-            android:textSize="30dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="jump"
+            android:textSize="30dp" />
 
         <TextView
             android:id="@+id/tv_gradient"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="挑战失败"
-            android:textSize="30dp"
             android:gravity="center"
             android:paddingBottom="30dp"
-           />
+            android:text="挑战失败"
+            android:textSize="30dp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:adapter="@{vm.freeAdapter}"
+            app:adapterList="@{vm.testList}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
 
     </LinearLayout>
 </layout>

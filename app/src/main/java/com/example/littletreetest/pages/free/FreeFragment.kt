@@ -6,7 +6,7 @@ import android.graphics.Shader
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.viewModels
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentFreeBinding
@@ -23,7 +23,7 @@ class FreeFragment : BaseFragment() {
 
     lateinit var binding: FragmentFreeBinding
 
-    private val freeVM: FreeViewModel by activityViewModels()
+    private val freeVM: FreeViewModel by viewModels()
 
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
@@ -31,23 +31,26 @@ class FreeFragment : BaseFragment() {
         binding.vm = freeVM
         binding.lifecycleOwner = this
 
+//        IncludeFreeTvBinding.bind(binding.includeTest)
+
         binding.tvTest.setOnClickListener {
-            freeVM.updateFree()
+//            freeVM.updateFree()
+
+            freeVM.testList.value =mutableListOf<String>("111","222","333")
+
         }
         binding.btnJump.setOnClickListener {
-            findNavController().navigate(R.id.action_freeFragment_to_freeFragment2)
+//            findNavController().navigate(R.id.action_freeFragment_to_freeFragment2)
+
+            freeVM.updateParentText()
         }
 
-//        val endX = textView.paint.textSize * textView.text.length
-//        val linearGradient = LinearGradient(
-//            0f, 0f, endX, 0f,
-//            Color.parseColor("#FFFF68FF"),
-//            Color.parseColor("#FFFED732"),
-//            Shader.TileMode.CLAMP
-//        )
-//        textView.paint.shader = linearGradient
-//        textView.invalidate()
+//        freeVM.testList.observe(viewLifecycleOwner){
+//           freeVM.freeAdapter.setList(it)
+//        }
 
+
+//        freeVM.updateParentText()
     }
 
 }

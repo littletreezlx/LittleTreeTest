@@ -23,7 +23,7 @@ class FreeViewModel @ViewModelInject constructor(
     private val getFreeUseCase: GetFreeUseCase,
     private val updateFreeUseCase: UpdateFreeUseCase,
     @Assisted private val savedState: SavedStateHandle
-) : BaseViewModel() {
+) : FreeParentViewModel() {
 
     private val SAVED_STATE_KEY = "key"
 
@@ -37,6 +37,20 @@ class FreeViewModel @ViewModelInject constructor(
 //    }
 
     val test: LiveData<String> = _test
+
+
+    val freeAdapter by lazy {
+        FreeAdapter(mutableListOf())
+    }
+
+    val testList = MutableLiveData<MutableList<String>>().apply {
+        value = mutableListOf<String>("1","2","3")
+    }
+
+
+    fun updateParentText(){
+        _testParent.value = "hahaha"
+    }
 
 
     fun getFree() {
