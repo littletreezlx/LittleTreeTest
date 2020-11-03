@@ -36,13 +36,17 @@ class FreeFragment : BaseFragment() {
         binding.tvTest.setOnClickListener {
 //            freeVM.updateFree()
 
-            freeVM.testList.value =mutableListOf<String>("111","222","333")
+//            freeVM.testList.value =mutableListOf<String>("111","222","333")
+
+            freeVM.source0.value = 0
 
         }
         binding.btnJump.setOnClickListener {
 //            findNavController().navigate(R.id.action_freeFragment_to_freeFragment2)
 
-            freeVM.updateParentText()
+//            freeVM.updateParentText()
+
+            freeVM.source1.value = 0
         }
 
 //        freeVM.testList.observe(viewLifecycleOwner){

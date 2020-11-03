@@ -2,10 +2,7 @@ package com.example.littletreetest.pages.free
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.doFailure
 import com.doSuccess
 import com.example.littletreetest.usecase.GetFreeUseCase
@@ -28,13 +25,7 @@ class FreeViewModel @ViewModelInject constructor(
     private val SAVED_STATE_KEY = "key"
 
     private val _test = MutableLiveData<String>()
-//        .apply {
-//        savedState.get<String>(SAVED_STATE_KEY)?.let {
-//            if (it.isNotEmpty()) {
-//                value = it
-//            }
-//        }
-//    }
+
 
     val test: LiveData<String> = _test
 
@@ -43,9 +34,27 @@ class FreeViewModel @ViewModelInject constructor(
         FreeAdapter(mutableListOf())
     }
 
-    val testList = MutableLiveData<MutableList<String>>().apply {
+
+    val source0 = MutableLiveData<Int>()
+
+    val source1 = MutableLiveData<Int>()
+
+    val testList = MediatorLiveData<MutableList<String>>().apply {
         value = mutableListOf<String>("1","2","3")
+
+        addSource(source0) {
+            value = value?.apply {
+                add("4")
+            }
+        }
+        addSource(source1) {
+            value = value?.apply {
+                removeLast()
+            }
+        }
     }
+
+
 
 
     fun updateParentText(){
