@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_freeFragment"
             app:destination="@id/freeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_smartRefreshFragment"
+            app:destination="@id/smartRefreshFragment" />
     </fragment>
 
 
@@ -35,6 +38,10 @@
         android:id="@+id/freeFragment2"
         android:name="com.example.littletreetest.pages.free.FreeFragment2"
         android:label="FreeFragment2" />
+    <fragment
+        android:id="@+id/smartRefreshFragment"
+        android:name="com.example.littletreetest.pages.testthird.smartrefreshlayout.SmartRefreshFragment"
+        android:label="SmartRefreshFragment" />
 
 
 </navigation>

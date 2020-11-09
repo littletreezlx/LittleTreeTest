@@ -27,11 +27,7 @@ class FreeFragment2 : BaseFragment() {
         binding = FragmentFree2Binding.bind(view)
         binding.vm = freeVM
         binding.lifecycleOwner = this
-
-        binding.tvTest.setOnClickListener {
-            freeVM.getFree()
-        }
-
     }
+
 
 }

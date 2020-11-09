@@ -19,7 +19,9 @@ class MainFragment : BaseFragment() {
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentMainBinding.bind(view)
         binding.btnHhh.setOnClickListener {
-            findNavController().navigate(R.id.action_mainFragment_to_freeFragment)
+//            findNavController().navigate(R.id.action_mainFragment_to_freeFragment)
+
+            findNavController().navigate(R.id.action_mainFragment_to_smartRefreshFragment)
         }
     }
 

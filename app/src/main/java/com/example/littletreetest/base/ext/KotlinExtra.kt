@@ -68,7 +68,7 @@ fun showToast(message: String) {
 
 private fun showToastReally(message: String) {
     val toast = Toast.makeText(MyApp.context, message, Toast.LENGTH_SHORT)
-    if (lastToast.view.isShown) {
+    if (lastToast.view?.isShown == true) {
         lastToast.cancel()
     }
     toast.show()

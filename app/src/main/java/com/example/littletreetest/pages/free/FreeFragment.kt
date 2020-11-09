@@ -5,6 +5,7 @@ import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.littletreetest.R
@@ -30,31 +31,29 @@ class FreeFragment : BaseFragment() {
         binding = FragmentFreeBinding.bind(view)
         binding.vm = freeVM
         binding.lifecycleOwner = this
-
-//        IncludeFreeTvBinding.bind(binding.includeTest)
-
         binding.tvTest.setOnClickListener {
-//            freeVM.updateFree()
-
-//            freeVM.testList.value =mutableListOf<String>("111","222","333")
-
             freeVM.source0.value = 0
 
         }
-        binding.btnJump.setOnClickListener {
-//            findNavController().navigate(R.id.action_freeFragment_to_freeFragment2)
 
-//            freeVM.updateParentText()
+        binding.searchView.setOnQueryTextListener(object :SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Timber.d("Search: ${query}")
+                return false
+            }
 
-            freeVM.source1.value = 0
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Timber.d("Search: ${newText}")
+                return false
+            }
+
+        })
+        binding.searchView.setOnCloseListener {
+            Timber.d("Search: onclose")
+            false
         }
 
-//        freeVM.testList.observe(viewLifecycleOwner){
-//           freeVM.freeAdapter.setList(it)
-//        }
 
-
-//        freeVM.updateParentText()
     }
 
 }
