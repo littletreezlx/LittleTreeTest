@@ -17,10 +17,15 @@ import kotlinx.coroutines.launch
 
 
 class FreeViewModel @ViewModelInject constructor(
-    private val getFreeUseCase: GetFreeUseCase,
-    private val updateFreeUseCase: UpdateFreeUseCase,
+//    private val getFreeUseCase: GetFreeUseCase,
+//    private val updateFreeUseCase: UpdateFreeUseCase,
     @Assisted private val savedState: SavedStateHandle
 ) : FreeParentViewModel() {
+
+
+    var testNavGraphViewModels = "0"
+
+
 
     private val SAVED_STATE_KEY = "key"
 

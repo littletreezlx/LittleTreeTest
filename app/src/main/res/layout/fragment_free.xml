@@ -19,30 +19,6 @@
         android:orientation="vertical">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="搜索"
-                android:textSize="30dp"
-                />
-
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/search_view"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                />
-
-        </LinearLayout>
-
-
-
-
         <TextView
             android:id="@+id/tv_test"
             android:layout_width="100dp"
@@ -50,19 +26,8 @@
             android:background="@drawable/background_textview_downline"
             android:gravity="center"
             android:paddingBottom="30dp"
-            android:text="@{vm.test}"
+            android:text="awdwadas"
             android:textSize="30dp" />
-
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_jump"-->
-<!--            android:layout_width="100dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:gravity="center"-->
-<!--            android:text="jump"-->
-<!--            android:textSize="30dp" />-->
-
 
 
         <androidx.recyclerview.widget.RecyclerView
