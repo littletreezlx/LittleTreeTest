@@ -13,6 +13,7 @@ import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentFreeBinding
 import com.example.littletreetest.databinding.FragmentSmartRefreshBinding
 import com.example.littletreetest.pages.free.FreeAdapter
+import com.mixu.jingtu.common.ext.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
@@ -35,9 +36,11 @@ class SmartRefreshFragment : BaseFragment() {
         binding.lifecycleOwner = this
 
         binding.rvItem.adapter = FreeAdapter(mutableListOf("1","2","3","1","2","3","1","2","3","1","2","3"))
-
-
         binding.rvItemDown.adapter = FreeAdapter(mutableListOf("111","222","333"))
+        binding.layoutRefresh.setOnRefreshListener {
+            showToast("setOnRefreshListener")
+            it.finishRefresh(1000)
+        }
     }
 
 

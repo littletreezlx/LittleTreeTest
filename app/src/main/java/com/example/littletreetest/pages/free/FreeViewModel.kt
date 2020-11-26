@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class FreeViewModel @ViewModelInject constructor(
 //    private val getFreeUseCase: GetFreeUseCase,
-//    private val updateFreeUseCase: UpdateFreeUseCase,
+    private val repo: FreeRepo,
     @Assisted private val savedState: SavedStateHandle
 ) : FreeParentViewModel() {
 

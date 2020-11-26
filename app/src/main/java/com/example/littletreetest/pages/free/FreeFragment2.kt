@@ -22,14 +22,16 @@ class FreeFragment2 : BaseFragment() {
 
     lateinit var binding: FragmentFree2Binding
 
-    private val freeVM: FreeViewModel by navGraphViewModels(R.id.nav_main)
+    private val freeVM: FreeViewModel by navGraphViewModels(R.id.nav_main){
+        defaultViewModelProviderFactory
+    }
 
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentFree2Binding.bind(view)
         binding.vm = freeVM
         binding.lifecycleOwner = this
-        showToast(freeVM.testNavGraphViewModels)
+        showToast(freeVM.toString())
     }
 
 

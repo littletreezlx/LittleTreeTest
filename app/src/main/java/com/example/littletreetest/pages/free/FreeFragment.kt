@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.hilt.lifecycle.HiltViewModelFactory
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.example.littletreetest.R
@@ -27,7 +28,11 @@ class FreeFragment : BaseFragment() {
 
     lateinit var binding: FragmentFreeBinding
 
-    private val freeVM: FreeViewModel by navGraphViewModels(R.id.nav_main)
+    private val freeVM: FreeViewModel by navGraphViewModels(R.id.nav_main){
+        defaultViewModelProviderFactory
+    }
+
+//    private val freeVM: FreeViewModel by viewModels()
 
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
@@ -35,7 +40,8 @@ class FreeFragment : BaseFragment() {
         binding.vm = freeVM
         binding.lifecycleOwner = this
 
-        showToast(freeVM.testNavGraphViewModels)
+//        showToast(freeVM.testNavGraphViewModels)
+        showToast(freeVM.toString())
         binding.tvTest.setOnClickListener {
 //            freeVM.source0.value = 0
 
