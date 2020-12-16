@@ -3,6 +3,7 @@ package com.example.littletreetest.pages.free
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.navGraphViewModels
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
@@ -17,7 +18,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class FreeFragment2 : BaseFragment() {
 
-
     override val layoutId = R.layout.fragment_free2
 
     lateinit var binding: FragmentFree2Binding
@@ -26,12 +26,15 @@ class FreeFragment2 : BaseFragment() {
         defaultViewModelProviderFactory
     }
 
+    val args: FreeFragment2Args by navArgs()
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentFree2Binding.bind(view)
         binding.vm = freeVM
         binding.lifecycleOwner = this
-        showToast(freeVM.toString())
+//        showToast(freeVM.toString())
+
+        showToast("${args.test}")
     }
 
 

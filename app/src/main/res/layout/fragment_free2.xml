@@ -19,9 +19,9 @@
 
         <TextView
             android:id="@+id/tv_test"
-            android:layout_width="100dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{vm.test}"
+            android:text="nav_2_start"
             android:textSize="30dp"
             android:gravity="center"
             android:paddingBottom="30dp"

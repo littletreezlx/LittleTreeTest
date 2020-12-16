@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.littletreetest.pages.MainFragment"
-        android:label="MainFragment" >
+        android:label="MainFragment">
         <action
             android:id="@+id/action_mainFragment_to_testFragment"
             app:destination="@id/testFragment" />
@@ -29,19 +29,31 @@
     <fragment
         android:id="@+id/freeFragment"
         android:name="com.example.littletreetest.pages.free.FreeFragment"
-        android:label="FreeFragment" >
+        android:label="FreeFragment">
+
+        <argument
+            android:name="testBundle"
+            android:defaultValue="hhh"
+            app:argType="string" />
         <action
-            android:id="@+id/action_freeFragment_to_freeFragment2"
-            app:destination="@id/freeFragment2" />
+            android:id="@+id/action_freeFragment_to_nav_test_include"
+            app:destination="@id/nav_test">
+            <argument
+                android:name="test_include"
+                android:defaultValue="fuck"
+                app:argType="string" />
+
+        </action>
     </fragment>
-    <fragment
-        android:id="@+id/freeFragment2"
-        android:name="com.example.littletreetest.pages.free.FreeFragment2"
-        android:label="FreeFragment2" />
+
+
     <fragment
         android:id="@+id/smartRefreshFragment"
         android:name="com.example.littletreetest.pages.testthird.smartrefreshlayout.SmartRefreshFragment"
         android:label="SmartRefreshFragment" />
+
+
+    <include app:graph="@navigation/nav_test_include" />
 
 
 </navigation>

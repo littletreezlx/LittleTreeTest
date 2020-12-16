@@ -14,7 +14,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -26,16 +26,8 @@
             android:background="@drawable/background_textview_downline"
             android:gravity="center"
             android:paddingBottom="30dp"
-            android:text="awdwadas"
+            android:text="to_include"
             android:textSize="30dp" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:adapter="@{vm.freeAdapter}"
-            app:adapterList="@{vm.testList}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 
     </LinearLayout>
