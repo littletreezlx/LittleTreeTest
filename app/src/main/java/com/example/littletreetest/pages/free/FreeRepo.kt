@@ -1,17 +1,39 @@
 package com.example.littletreetest.pages.free
 
+import android.app.Activity
+import android.app.Application
+import android.content.Context
+import androidx.fragment.app.FragmentActivity
 import com.DataResult
 import com.doFailure
 import com.doSuccess
 import com.mixu.jingtu.common.base.BaseRepo
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ActivityRetainedScoped
+import dagger.hilt.android.scopes.ActivityScoped
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import timber.log.Timber
 import javax.inject.Inject
 
 
-class FreeRepo @Inject constructor(private val local: FreeLocalStorage) : BaseRepo() {
+@ActivityScoped
+class FreeRepo @Inject constructor(
+//    @ActivityContext private val activity: FragmentActivity,
+//    @ApplicationContext context: Context,
+    context: Activity,
+    appRepo: AppRepo,
+    private val local: FreeLocalStorage
+) : BaseRepo() {
 
+    init {
+        Timber.d(context.toString())
+        Timber.d(appRepo.toString())
+    }
 
     suspend fun getFree() = flow {
         val result = local.freeLocal

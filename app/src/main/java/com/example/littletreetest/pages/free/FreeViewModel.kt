@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 
 class FreeViewModel @ViewModelInject constructor(
@@ -61,5 +62,8 @@ class FreeViewModel @ViewModelInject constructor(
 
 
 
+    fun test(){
+        Timber.d(repo.toString())
+    }
 
 }

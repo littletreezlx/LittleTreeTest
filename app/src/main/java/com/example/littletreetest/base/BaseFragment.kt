@@ -96,6 +96,18 @@ abstract class BaseFragment : Fragment() {
 //        (activity as BaseActivityKT).currentFragment = null
     }
 
+
+    override fun onStop() {
+        super.onStop()
+        Timber.d("Lifecycle: ${javaClass.simpleName}___onStop")
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        Timber.d("Lifecycle: ${javaClass.simpleName}___onDestroyView")
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         Timber.d("Lifecycle: ${javaClass.simpleName}___onDestroy")

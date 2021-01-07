@@ -35,6 +35,8 @@ class MainFragment : BaseFragment() {
                 }
             }
             findNavController().navigate(action, options)
+
+
         }
     }
 

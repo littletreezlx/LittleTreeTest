@@ -11,10 +11,12 @@
         android:id="@+id/freeFragment22"
         android:name="com.example.littletreetest.pages.free.FreeFragment2"
         android:label="FreeFragment2">
+
+
         <argument
             android:name="test"
-            android:defaultValue="lll"
-            app:argType="string" />
+            app:argType="com.example.littletreetest.pages.free.TestSerializeable" />
+
     </fragment>
 
 

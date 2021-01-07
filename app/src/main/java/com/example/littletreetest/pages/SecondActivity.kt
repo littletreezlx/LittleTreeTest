@@ -12,7 +12,8 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class SecondActivity : BaseActivity() {
+
 
     @Inject
     lateinit var repo: FreeRepo

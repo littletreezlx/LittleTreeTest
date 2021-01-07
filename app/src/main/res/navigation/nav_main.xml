@@ -38,10 +38,10 @@
         <action
             android:id="@+id/action_freeFragment_to_nav_test_include"
             app:destination="@id/nav_test">
+
             <argument
-                android:name="test_include"
-                android:defaultValue="fuck"
-                app:argType="string" />
+                android:name="test"
+                app:argType="com.example.littletreetest.pages.free.TestSerializeable" />
 
         </action>
     </fragment>

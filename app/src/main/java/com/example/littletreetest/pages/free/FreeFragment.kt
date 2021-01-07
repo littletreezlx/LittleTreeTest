@@ -36,27 +36,42 @@ class FreeFragment : BaseFragment() {
         defaultViewModelProviderFactory
     }
 
+    @Inject
+    lateinit var repo: FreeRepo
+
     //    private val freeVM: FreeViewModel by viewModels
 
     val args: FreeFragmentArgs by navArgs()
 
 
+    var test = TestSerializeable("in free")
+
+
     override fun initView(view: View, savedInstanceState: Bundle?) {
+        Timber.d(test.toString())
+        Timber.d(test.name)
         binding = FragmentFreeBinding.bind(view)
         binding.vm = freeVM
+        freeVM.test()
+
         binding.lifecycleOwner = this
-        showToast("${args.testBundle}")
+        showToast("${args}")
         binding.tvTest.setOnClickListener {
 //            Navte
-            val action = FreeFragmentDirections.actionFreeFragmentToNavTestInclude("LLL")
+            val action = FreeFragmentDirections.actionFreeFragmentToNavTestInclude(test)
             val options = navOptions {
-                popUpTo(R.id.freeFragment) {
-                    inclusive = true
-                }
+//                popUpTo(R.id.nav_main) {
+//                    inclusive = true
+//                }
+
+//                popUpTo(R.id.nav_main) {
+//                    inclusive = true
+//                }
             }
             findNavController().navigate(action, options)
         }
 
+        Timber.d(repo.toString())
     }
 
 }
