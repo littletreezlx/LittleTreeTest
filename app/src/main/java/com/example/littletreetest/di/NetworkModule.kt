@@ -1,6 +1,8 @@
 package com.example.littletreetest.di
 
 import android.content.Context
+import com.example.littletreetest.pages.free.HiltInterface
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +17,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 // 这里使用了 ApplicationComponent，因此 NetworkModule 绑定到 Application 的生命周期。
-object NetworkModule {
+object  NetworkModule {
 
 
     @Provides
@@ -34,5 +36,13 @@ object NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
+
+
+    @Provides
+    @Singleton
+    fun provideTRPGApi(retrofit: Retrofit): HiltInterface {
+        return retrofit.create(HiltInterface::class.java)
+    }
+
 
 }

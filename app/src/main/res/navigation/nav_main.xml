@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_mainFragment_to_smartRefreshFragment"
             app:destination="@id/smartRefreshFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </fragment>
 
 
@@ -54,6 +57,10 @@
 
 
     <include app:graph="@navigation/nav_test_include" />
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.littletreetest.pages.mockjingtu.GameFragment"
+        android:label="GameFragment" />
 
 
 </navigation>

@@ -17,30 +17,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(ApplicationComponent::class)
 // 这里使用了 ApplicationComponent，因此 NetworkModule 绑定到 Application 的生命周期。
-abstract class NetworkModule {
+abstract class InterfaceModule {
 
 
-    @Provides
-    @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
-            .build()
-    }
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl("https://api.github.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-
-    @Binds
-    abstract fun provideInterface(
-        aa: Retrofit
-    ): HiltInterface
+//    @Binds
+//    abstract fun provideInterface(
+//        aa: Retrofit
+//    ): HiltInterface
 
 }

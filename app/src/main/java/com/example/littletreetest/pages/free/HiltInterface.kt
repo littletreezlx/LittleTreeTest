@@ -1,4 +1,7 @@
 package com.example.littletreetest.pages.free
 
-class HiltInterface {
+import javax.inject.Inject
+
+
+interface  HiltInterface {
 }

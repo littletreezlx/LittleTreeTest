@@ -27,6 +27,7 @@ class FreeRepo @Inject constructor(
 //    @ApplicationContext context: Context,
     context: Activity,
     appRepo: AppRepo,
+    face: HiltInterface,
     private val local: FreeLocalStorage
 ) : BaseRepo() {
 

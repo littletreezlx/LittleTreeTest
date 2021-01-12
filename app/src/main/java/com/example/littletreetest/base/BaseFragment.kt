@@ -126,8 +126,11 @@ abstract class BaseFragment : Fragment() {
 
     open var onBackPressed: (() -> Unit)? = null
 
+
     fun back(){
         logOnBackPressed()
         onBackPressed?.invoke()
     }
+
+
 }
