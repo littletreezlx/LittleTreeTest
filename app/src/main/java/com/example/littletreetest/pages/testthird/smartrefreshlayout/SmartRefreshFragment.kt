@@ -32,9 +32,6 @@ class SmartRefreshFragment : BaseFragment() {
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentSmartRefreshBinding.bind(view)
-        binding.vm = smartRefreshVM
-        binding.lifecycleOwner = this
-
         binding.rvItem.adapter = FreeAdapter(mutableListOf("1","2","3","1","2","3","1","2","3","1","2","3"))
         binding.rvItemDown.adapter = FreeAdapter(mutableListOf("111","222","333"))
         binding.layoutRefresh.setOnRefreshListener {

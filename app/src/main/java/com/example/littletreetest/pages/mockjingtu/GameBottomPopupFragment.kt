@@ -59,14 +59,9 @@ class GameBottomPopupFragment : BaseFragment() {
 
 
     private fun fakeOnResume() {
-//        if (isFirstCreated) {
-//            isFirstCreated = false
-//            return
-//        }
         var tbdFragment = (roomBottomAdapter as UserRoomBottomAdapter).fragments.get(binding.vpRoomBottom.currentItem)
         tbdFragment?.let {
-            it.isResumed
-            if (it.isAdded) {
+            if (it.isAdded && it.isResumed) {
                 it.onResume()
             }
         }

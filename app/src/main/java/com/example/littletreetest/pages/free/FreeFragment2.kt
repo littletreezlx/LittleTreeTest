@@ -35,17 +35,11 @@ class FreeFragment2 : BaseFragment() {
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentFree2Binding.bind(view)
-        binding.vm = freeVM
-        binding.lifecycleOwner = this
-//        showToast(freeVM.toString())
-
 
         val test = args.test
         Timber.d(test.toString())
         Timber.d(test.name)
-
         test.name = "ggg"
-
 
         binding.tvTest.setOnClickListener {
             startActivity(Intent(context, SecondActivity::class.java))

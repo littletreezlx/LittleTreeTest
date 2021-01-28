@@ -1,34 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <data>
 
-        <variable
-            name="vm"
-            type="com.example.littletreetest.pages.free.FreeViewModel" />
-
-    </data>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_textview_downline"
         android:gravity="center"
-        android:orientation="vertical">
+        android:paddingBottom="30dp"
+        android:text="to_include"
+        android:textSize="30dp" />
 
 
-        <TextView
-            android:id="@+id/tv_test"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_textview_downline"
-            android:gravity="center"
-            android:paddingBottom="30dp"
-            android:text="to_include"
-            android:textSize="30dp" />
-
-
-    </LinearLayout>
-</layout>
+</LinearLayout>

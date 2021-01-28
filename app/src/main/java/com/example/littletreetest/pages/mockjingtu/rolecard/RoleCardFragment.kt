@@ -38,16 +38,18 @@ class RoleCardFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        refresh()
+        refreshChildPages()
     }
 
 
-    private fun refresh() {
-//        val top = binding.fragmentTop.findFragment<RoleCardTopFragment>()
-//        if (top.isAdded) {
-//            top.onResume()
-//        }
-        refreshChildPages()
+    private fun refreshChildPages() {
+        val position = binding.vpRoleCard.currentItem
+        var tbdFragment = viewPagerAdapter.fragments.get(position)
+        tbdFragment?.let {
+            if (it.isAdded && it.isResumed) {
+                it.onResume()
+            }
+        }
     }
 
 
@@ -78,25 +80,6 @@ class RoleCardFragment : BaseFragment() {
             isUserInputEnabled = false
             (getChildAt(0) as RecyclerView).setItemViewCacheSize(viewPagerAdapter.itemCount)
             (getChildAt(0) as RecyclerView).layoutManager?.isItemPrefetchEnabled = false
-        }
-//        binding.vpRoleCard.registerOnPageChangeCallback(object :
-//            ViewPager2.OnPageChangeCallback() {
-//            override fun onPageSelected(position: Int) {
-//                super.onPageSelected(position)
-//                Timber.d("onPageSelected: ${position}")
-//                refreshChildPages()
-//            }
-//        })
-    }
-
-
-    private fun refreshChildPages() {
-        val position = binding.vpRoleCard.currentItem
-        var tbdFragment = viewPagerAdapter.fragments.get(position)
-        tbdFragment?.let {
-            if (it.isAdded && it.isResumed) {
-                it.onResume()
-            }
         }
     }
 

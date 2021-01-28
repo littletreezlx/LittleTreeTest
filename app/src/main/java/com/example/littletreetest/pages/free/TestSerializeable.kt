@@ -1,10 +1,12 @@
 package com.example.littletreetest.pages.free
 
-import java.io.Serializable
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+
+@Parcelize
 class TestSerializeable(
 
     var name: String = "init"
 
-) : Serializable {
-}
+) : Parcelable

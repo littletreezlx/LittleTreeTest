@@ -22,23 +22,27 @@ class MainFragment : BaseFragment() {
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentMainBinding.bind(view)
         binding.btnHhh.setOnClickListener {
-//            val action = MainFragmentDirections.actionMainFragmentToFreeFragment()
-//            val options = navOptions {
-//                popUpTo(R.id.mainFragment) {
-//                    inclusive = false
-//                }
-//                anim {
-//                    enter = R.anim.fragment_fade_enter
-//                    exit = R.anim.fragment_fade_exit
-//                    popEnter = R.anim.fragment_fade_enter
-//                    popExit = R.anim.fragment_fade_exit
-//                }
-//            }
-//            findNavController().navigate(action, options)
-
-            val action = MainFragmentDirections.actionMainFragmentToGameFragment()
-            findNavController().navigate(action)
+            val action = MainFragmentDirections.actionMainFragmentToFreeFragment()
+            val options = navOptions {
+                popUpTo(R.id.mainFragment) {
+                    inclusive = false
+                }
+                anim {
+                    enter = R.anim.fragment_fade_enter
+                    exit = R.anim.fragment_fade_exit
+                    popEnter = R.anim.fragment_fade_enter
+                    popExit = R.anim.fragment_fade_exit
+                }
+            }
+            findNavController().navigate(action, options)
         }
+
+//        val action = MainFragmentDirections.actionMainFragmentToGameFragment()
+//        findNavController().navigate(action)\
+
+
+        val action = MainFragmentDirections.actionMainFragmentToRecyclerViewFragment()
+        findNavController().navigate(action)
     }
 
 }

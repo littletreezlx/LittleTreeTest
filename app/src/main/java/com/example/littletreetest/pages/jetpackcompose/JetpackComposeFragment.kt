@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages.free
+package com.example.littletreetest.pages.jetpackcompose
 
 import android.graphics.Color
 import android.graphics.LinearGradient
@@ -18,6 +18,7 @@ import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.base.SpUtil
 import com.example.littletreetest.databinding.FragmentFreeBinding
 import com.example.littletreetest.pages.MainFragmentDirections
+import com.example.littletreetest.pages.free.*
 import com.mixu.jingtu.common.ext.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -25,7 +26,7 @@ import javax.inject.Inject
 
 
 @AndroidEntryPoint
-class FreeFragment : BaseFragment() {
+class JetpackComposeFragment : BaseFragment() {
 
 
     override val layoutId = R.layout.fragment_free
@@ -43,29 +44,14 @@ class FreeFragment : BaseFragment() {
 
     val args: FreeFragmentArgs by navArgs()
 
-    var test = TestSerializeable("in free")
-
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
-        Timber.d(test.toString())
-        Timber.d(test.name)
         binding = FragmentFreeBinding.bind(view)
-
         freeVM.test()
+
         showToast("${args}")
         binding.tvTest.setOnClickListener {
-//            Navte
-            val action = FreeFragmentDirections.actionFreeFragmentToNavTestInclude(test)
-            val options = navOptions {
-//                popUpTo(R.id.nav_main) {
-//                    inclusive = true
-//                }
 
-//                popUpTo(R.id.nav_main) {
-//                    inclusive = true
-//                }
-            }
-            findNavController().navigate(action, options)
         }
 
         Timber.d(repo.toString())
