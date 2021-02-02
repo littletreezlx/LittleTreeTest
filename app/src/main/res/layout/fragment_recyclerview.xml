@@ -10,6 +10,20 @@
     android:orientation="vertical">
 
 
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="500dp">-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rv_test"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="300dp">-->
+
+<!--        </androidx.recyclerview.widget.RecyclerView>-->
+
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_test"
         android:layout_width="match_parent"
@@ -34,11 +48,24 @@
             />
 
         <Button
-            android:id="@+id/btn_tbd"
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="asdas"
+            android:text="add"
             />
+
+        <Button
+            android:id="@+id/btn_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="remove"
+            />
+
+        <Button
+            android:id="@+id/btn_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="timer"/>
 
     </LinearLayout>
 

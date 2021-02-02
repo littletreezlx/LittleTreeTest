@@ -18,10 +18,13 @@ import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import kotlin.concurrent.thread
+import kotlin.concurrent.timer
+import kotlin.concurrent.timerTask
 
 
 class RecyclerViewViewModel @ViewModelInject constructor(
-    private val repo: FreeRepo,
+    private val repo: RecyclerViewRepo,
     @Assisted private val savedState: SavedStateHandle
 ) : BaseViewModel() {
 
@@ -29,16 +32,61 @@ class RecyclerViewViewModel @ViewModelInject constructor(
     private val _datas = MutableLiveData<MutableList<RvItemDataModel>>()
     val datas: LiveData<MutableList<RvItemDataModel>> = _datas
 
+    private val _onDataAdded = MutableLiveData<RvItemDataModel>()
+    val onDataAdded: LiveData<RvItemDataModel> = _onDataAdded
 
-    fun getData() {
-        val length = 20
-        val originDatas = MutableList<RvItemDataModel>(length) {
-            RvItemDataModel("")
+    private val _onDataRemoved = MutableLiveData<RvItemDataModel>()
+    val onDataRemoved: LiveData<RvItemDataModel> = _onDataRemoved
+
+
+    fun startFakeMessageReceiver(){
+        viewModelScope.launch {
+            timer(period = 1000) {
+                addOneData()
+            }
         }
-        for (i in 0 until  length) {
-            originDatas[i].content = i.toString()
-        }
-        _datas.value = originDatas
     }
+
+
+    fun getData(testAdapter: TestAdapter) {
+        viewModelScope.launch {
+            repo.getData().collectLatest {
+                it.doSuccess {
+                    _datas.value = it
+                    testAdapter.setDiffNewData(it)
+                }
+            }
+        }
+    }
+
+
+    fun addOneData() {
+        viewModelScope.launch {
+            repo.addData().collectLatest {
+                it.doSuccess {
+//                    _datas.value = it.toMutableList()
+                    _onDataAdded.value = it
+                }
+            }
+        }
+    }
+
+
+    fun removeOneData() {
+        viewModelScope.launch {
+            repo.removeData().collectLatest {
+                it.doSuccess {
+//                    _datas.value = it
+                    _onDataRemoved.value =RvItemDataModel("HHH")
+                }
+            }
+        }
+    }
+
+
+    fun deleteOneData() {
+
+    }
+
 
 }
