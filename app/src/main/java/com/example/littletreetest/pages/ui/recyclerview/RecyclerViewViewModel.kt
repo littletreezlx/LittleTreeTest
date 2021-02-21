@@ -38,6 +38,9 @@ class RecyclerViewViewModel @ViewModelInject constructor(
     private val _onDataRemoved = MutableLiveData<RvItemDataModel>()
     val onDataRemoved: LiveData<RvItemDataModel> = _onDataRemoved
 
+    private val _onHistoryRemoved = MutableLiveData<Int>()
+    val onHistoryRemoved: LiveData<Int> = _onHistoryRemoved
+
 
     fun startFakeMessageReceiver(){
         viewModelScope.launch {
@@ -82,6 +85,18 @@ class RecyclerViewViewModel @ViewModelInject constructor(
             }
         }
     }
+
+
+    fun removeHistory() {
+        viewModelScope.launch {
+            repo.removeHistory().collectLatest {
+                it.doSuccess {
+                    _onHistoryRemoved.value = 10
+                }
+            }
+        }
+    }
+
 
 
     fun deleteOneData() {

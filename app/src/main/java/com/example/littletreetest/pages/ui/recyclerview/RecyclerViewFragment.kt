@@ -71,6 +71,9 @@ class RecyclerViewFragment : BaseFragment() {
         binding.btnTimer.setOnClickListener {
             vm.startFakeMessageReceiver()
         }
+        binding.btnRemoveHistory.setOnClickListener {
+            vm.removeHistory()
+        }
     }
 
 
@@ -109,6 +112,9 @@ class RecyclerViewFragment : BaseFragment() {
         }
         vm.onDataRemoved.observe(viewLifecycleOwner) {
             testAdapter.removeAt(testAdapter.data.size - 1)
+        }
+        vm.onHistoryRemoved.observe(viewLifecycleOwner) {
+            testAdapter.notifyItemRangeRemoved(0, it)
         }
     }
 

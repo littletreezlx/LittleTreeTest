@@ -5,6 +5,7 @@ import com.mixu.jingtu.common.base.BaseRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -37,6 +38,14 @@ class RecyclerViewRepo @Inject constructor(
 
     suspend fun removeData() = flow {
         localData.removeAt(localData.size-1)
+        emit(DataResult.Success(localData))
+    }.flowOn(Dispatchers.IO)
+
+
+    suspend fun removeHistory() = flow {
+        Timber.d(localData.toString())
+        localData.subList(0,10).clear()
+        Timber.d(localData.toString())
         emit(DataResult.Success(localData))
     }.flowOn(Dispatchers.IO)
 
