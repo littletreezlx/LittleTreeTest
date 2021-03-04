@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_mainFragment_to_recyclerViewFragment"
             app:destination="@id/recyclerViewFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_constraintLayoutFragment"
+            app:destination="@id/constraintLayoutFragment" />
     </fragment>
 
 
@@ -72,6 +75,10 @@
         android:id="@+id/recyclerViewFragment"
         android:name="com.example.littletreetest.pages.ui.recyclerview.RecyclerViewFragment"
         android:label="RecyclerViewFragment" />
+    <fragment
+        android:id="@+id/constraintLayoutFragment"
+        android:name="com.example.littletreetest.pages.ui.constraintlayout.ConstraintLayoutFragment"
+        android:label="ConstraintLayoutFragment" />
 
 
 </navigation>

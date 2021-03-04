@@ -41,7 +41,10 @@ class MainFragment : BaseFragment() {
 //        findNavController().navigate(action)\
 
 
-        val action = MainFragmentDirections.actionMainFragmentToRecyclerViewFragment()
+//        val action = MainFragmentDirections.actionMainFragmentToRecyclerViewFragment()
+//        findNavController().navigate(action)
+
+        val action = MainFragmentDirections.actionMainFragmentToConstraintLayoutFragment()
         findNavController().navigate(action)
     }
 

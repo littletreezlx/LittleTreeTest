@@ -155,7 +155,7 @@ dependencies {
     api 'com.scwang.smart:refresh-footer-classics:2.0.1'    //经典加载
 
     api "androidx.datastore:datastore:1.0.0-alpha06"
-
+    api 'com.hyman:flowlayout-lib:1.1.2'
 
 //    api "androidx.compose.ui:ui:$compose_version"
 //    // Tooling support (Previews, etc.)
