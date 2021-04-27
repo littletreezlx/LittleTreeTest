@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages.mockjingtu;
+package com.example.littletreetest.pages.jingtu;
 
 import android.util.SparseArray
 import androidx.fragment.app.Fragment
@@ -6,9 +6,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.littletreetest.base.BaseFragment
-import com.example.littletreetest.pages.mockjingtu.rolecard.RoleBackgroundFragment
-import com.example.littletreetest.pages.mockjingtu.rolecard.RoleCardFragment
-import com.example.littletreetest.pages.mockjingtu.rolecard.RoleItemsFragment
+import com.example.littletreetest.pages.jingtu.rolecard.RoleCardFragment
+import com.example.littletreetest.pages.jingtu.rolecard.RoleItemsFragment
 
 
 class UserRoomBottomAdapter(fm: FragmentManager, lifecycle: Lifecycle) :

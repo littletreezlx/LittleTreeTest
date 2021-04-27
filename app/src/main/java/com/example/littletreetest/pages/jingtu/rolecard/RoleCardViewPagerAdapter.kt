@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages.mockjingtu.rolecard
+package com.example.littletreetest.pages.jingtu.rolecard
 
 import android.util.SparseArray
 import androidx.fragment.app.Fragment

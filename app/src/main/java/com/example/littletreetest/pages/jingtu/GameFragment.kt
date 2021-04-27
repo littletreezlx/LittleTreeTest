@@ -1,10 +1,8 @@
-package com.example.littletreetest.pages.mockjingtu
+package com.example.littletreetest.pages.jingtu
 
-import android.content.res.Resources
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.example.littletreetest.R

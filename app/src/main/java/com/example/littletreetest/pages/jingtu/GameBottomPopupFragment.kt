@@ -1,11 +1,7 @@
-package com.example.littletreetest.pages.mockjingtu
+package com.example.littletreetest.pages.jingtu
 
-import android.animation.Animator
-import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter

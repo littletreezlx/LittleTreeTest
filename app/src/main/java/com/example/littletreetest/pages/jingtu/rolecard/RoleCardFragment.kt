@@ -1,20 +1,14 @@
-package com.example.littletreetest.pages.mockjingtu.rolecard
+package com.example.littletreetest.pages.jingtu.rolecard
 
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.findFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseDialogFragment
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentRoomRoleCardBinding
-import com.example.littletreetest.pages.mockjingtu.UserRoomBottomAdapter
 import com.mixu.jingtu.common.component.GridLayoutDecoration
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 
 @AndroidEntryPoint
 class RoleCardFragment : BaseFragment() {

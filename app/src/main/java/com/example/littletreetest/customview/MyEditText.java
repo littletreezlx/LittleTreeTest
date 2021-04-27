@@ -6,9 +6,6 @@ import android.view.MotionEvent;
 
 import androidx.appcompat.widget.AppCompatEditText;
 
-/**
- * Created by bruce on 2017/10/4.
- */
 
 public class MyEditText extends AppCompatEditText {
 

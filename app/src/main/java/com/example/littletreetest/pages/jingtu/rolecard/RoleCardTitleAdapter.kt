@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages.mockjingtu.rolecard
+package com.example.littletreetest.pages.jingtu.rolecard
 
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.littletreetest.R

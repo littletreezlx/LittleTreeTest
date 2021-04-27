@@ -5,6 +5,7 @@ import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseActivity
 import com.example.littletreetest.pages.free.FreeFragment
 import com.example.littletreetest.pages.free.FreeRepo
+import com.example.littletreetest.pages.jingtu.DianzanFragment
 import com.example.littletreetest.pages.ui.progressbar.ProgressBarFragment
 import dagger.hilt.EntryPoint
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,14 +22,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-//        supportFragmentManager.beginTransaction()
-//            .replace(
-//                R.id.container,
-//                FreeFragment()
-//            )
-//            .commitNow()
-
-        Timber.d(repo.toString())
     }
 
 }

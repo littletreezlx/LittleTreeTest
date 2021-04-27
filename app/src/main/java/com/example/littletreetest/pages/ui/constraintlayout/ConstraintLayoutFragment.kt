@@ -35,27 +35,11 @@ class ConstraintLayoutFragment : BaseFragment() {
 
 
     private fun initViews() {
-        val list = mutableListOf(
-            "1",
-            "12",
-            "123",
-            "21421421",
-            "214214214214321312",
-            "333333333333333333333333333333333333333333333333333"
-        )
-
-        labelAdapter = LabelTagAdapter(list)
-        binding.layoutFlow.run {
-            adapter = labelAdapter
-        }
     }
 
 
     private fun setClicks() {
-        binding.btnAdd.setOnClickListener {
-        }
-        binding.btnRemove.setOnClickListener {
-        }
+
     }
 
 

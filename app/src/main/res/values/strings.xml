@@ -11,6 +11,7 @@
 
 
     <string name="behavior_view">com.example.littletreetest.test.coordinatorLayout.ViewBehavior</string>
+    <string name="title_activity_main">MainActivity</string>
 
 
 </resources>

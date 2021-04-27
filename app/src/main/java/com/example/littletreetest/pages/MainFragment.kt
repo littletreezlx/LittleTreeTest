@@ -27,24 +27,17 @@ class MainFragment : BaseFragment() {
                 popUpTo(R.id.mainFragment) {
                     inclusive = false
                 }
-                anim {
-                    enter = R.anim.fragment_fade_enter
-                    exit = R.anim.fragment_fade_exit
-                    popEnter = R.anim.fragment_fade_enter
-                    popExit = R.anim.fragment_fade_exit
-                }
+//                anim {
+//                    enter = R.anim.fragment_fade_enter
+//                    exit = R.anim.fragment_fade_exit
+//                    popEnter = R.anim.fragment_fade_enter
+//                    popExit = R.anim.fragment_fade_exit
+//                }
             }
             findNavController().navigate(action, options)
         }
 
-//        val action = MainFragmentDirections.actionMainFragmentToGameFragment()
-//        findNavController().navigate(action)\
-
-
-//        val action = MainFragmentDirections.actionMainFragmentToRecyclerViewFragment()
-//        findNavController().navigate(action)
-
-        val action = MainFragmentDirections.actionMainFragmentToConstraintLayoutFragment()
+        val action = MainFragmentDirections.actionMainFragmentToDianzanFragment()
         findNavController().navigate(action)
     }
 

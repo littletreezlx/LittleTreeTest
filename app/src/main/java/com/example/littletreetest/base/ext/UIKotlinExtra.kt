@@ -21,6 +21,17 @@ fun dp2px(value: Float): Int{
 }
 
 
+val Float.dp: Int
+    get() {
+        return AutoSizeUtils.dp2px(MyApp.context, this)
+    }
+
+val Int.dp: Int
+    get() {
+        return AutoSizeUtils.dp2px(MyApp.context, this.toFloat())
+    }
+
+
 fun View.expandTouchRange() {
     post {
         val bounds = Rect()

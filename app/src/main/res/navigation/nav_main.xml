@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_mainFragment_to_constraintLayoutFragment"
             app:destination="@id/constraintLayoutFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_dianzanFragment"
+            app:destination="@id/dianzanFragment" />
     </fragment>
 
 
@@ -68,7 +71,7 @@
     <include app:graph="@navigation/nav_test_include" />
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.littletreetest.pages.mockjingtu.GameFragment"
+        android:name="com.example.littletreetest.pages.jingtu.GameFragment"
         android:label="GameFragment" />
     <include app:graph="@navigation/nav_jetpack_compose" />
     <fragment
@@ -79,6 +82,10 @@
         android:id="@+id/constraintLayoutFragment"
         android:name="com.example.littletreetest.pages.ui.constraintlayout.ConstraintLayoutFragment"
         android:label="ConstraintLayoutFragment" />
+    <fragment
+        android:id="@+id/dianzanFragment"
+        android:name="com.example.littletreetest.pages.jingtu.DianzanFragment"
+        android:label="DianzanFragment" />
 
 
 </navigation>

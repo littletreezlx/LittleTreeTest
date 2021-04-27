@@ -5,7 +5,12 @@ import android.graphics.LinearGradient
 import android.graphics.Shader
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.ActivityResultRegistry
+import androidx.activity.result.contract.ActivityResultContract
 import androidx.appcompat.widget.SearchView
+import androidx.compose.runtime.Composable
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.hilt.lifecycle.HiltViewModelFactory
@@ -21,6 +26,7 @@ import com.example.littletreetest.pages.MainFragmentDirections
 import com.example.littletreetest.pages.free.*
 import com.mixu.jingtu.common.ext.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import org.w3c.dom.Text
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -33,28 +39,18 @@ class JetpackComposeFragment : BaseFragment() {
 
     lateinit var binding: FragmentFreeBinding
 
-    private val freeVM: FreeViewModel by navGraphViewModels(R.id.nav_main) {
-        defaultViewModelProviderFactory
-    }
-
-    @Inject
-    lateinit var repo: FreeRepo
-
     //    private val freeVM: FreeViewModel by viewModels
 
-    val args: FreeFragmentArgs by navArgs()
+//    val args: FreeFragmentArgs by navArgs()
 
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentFreeBinding.bind(view)
-        freeVM.test()
 
-        showToast("${args}")
-        binding.tvTest.setOnClickListener {
 
-        }
-
-        Timber.d(repo.toString())
     }
+
+
+
 
 }
