@@ -1,16 +1,10 @@
 package com.example.littletreetest.pages.jingtu
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
-import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentDianzanBinding
-import com.example.littletreetest.databinding.FragmentMockjingtuGameBinding
-import com.example.littletreetest.pages.free.*
-import com.mixu.jingtu.common.base.runOnce
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -27,17 +21,25 @@ class DianzanFragment : BaseFragment() {
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentDianzanBinding.bind(view)
 
-
-        binding.viewLike.setOnClickListener {
-            binding.viewLike.isChecked = !binding.viewLike.isChecked
-        }
-        binding.btnRestoreLike.setOnClickListener {
-            binding.viewLike.isChecked = false
-        }
+//
+//        binding.viewLike.setOnClickListener {
+//            binding.viewLike.isChecked = !binding.viewLike.isChecked
+//        }
+//        binding.btnRestoreLike.setOnClickListener {
+//            binding.viewLike.isChecked = false
+//        }
 
         binding.viewDianzan.setOnClickListener {
-            binding.viewDianzan.startSelectViewMotion()
+            Timber.d("touch:click")
+            binding.viewDianzan.startClickAnim()
         }
+        binding.viewDianzan.setOnLongClickListener {
+            Timber.d("touch:longclick")
+            binding.viewDianzan.startLongClickAnim()
+            true
+        }
+
+
         binding.btnRestoreDianzan.setOnClickListener {
             binding.viewDianzan.retore()
         }

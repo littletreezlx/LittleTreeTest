@@ -5,54 +5,58 @@ import android.animation.ValueAnimator.AnimatorUpdateListener
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.example.littletreetest.R
 import com.mixu.jingtu.common.ext.dp
 import timber.log.Timber
+import java.time.Duration
+import java.util.*
+import kotlin.random.Random
 
 class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
 
     init {
         initParams(context, attrs)
-//        initViews(context)
     }
 
 
     sealed class State {
 
         //初始未点赞状态
-        object Origin : State()
+        object UnLiked : State()
 
         //缩小大拇指
         object ShrinkThumb : State()
 
-        //缩小大拇指，同时扩散内圈光环
+        //扩大大拇指，扩散内圈光环直到铺满，开始发射红色拇指背景
         object ExpandThumb : State()
 
         //扩散外圈光环
         object ExpandRing : State()
 
-        //回弹大拇指
+        //回弹大拇指，结束发射红色拇指背景
         object ReboundThumb : State()
+
+        //最终点赞状态
+        object Liked : State()
 
     }
 
-    var currentState: State = State.Origin
+    var currentState: State = State.UnLiked
 
-    private val shrinkDuration = 1000f
-    private val expandThumbDuration = 1000f
+    private val shrinkDuration = 300f
+    private val expandThumbDuration = 800f
     private val expandThumbStartTime = shrinkDuration
-    private val expandRingDuration = 1000f
+    private val expandRingDuration = 500f
     private val expandRingStartTime = shrinkDuration + expandThumbDuration
-    private val reboundThumbDuration = 500f
+    private val reboundThumbDuration = 200f
     private val reboundThumbStartTime = shrinkDuration + expandThumbDuration + expandRingDuration
-
     //    private val wholeDuration = 3500f
     private val wholeDuration =
-        shrinkDuration + expandThumbDuration + expandRingDuration + reboundThumbStartTime
-
+        shrinkDuration + expandThumbDuration + expandRingDuration + reboundThumbDuration
 
     //    private val unSelectedColor = Color.parseColor("#E8E8E8")
     private val unSelectedColor = Color.parseColor("#FFFFFF")
@@ -63,8 +67,11 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
 
     private val expandThumbEndColor = Color.parseColor("#F98181")
 
-    private var expandThumbCurCircleR = 0f
+    //只是为了传给Listener
+    private var wholeWidth = 0f
+    private var wholeHeight = 0f
 
+    private var expandThumbCurCircleR = 0f
 
     //内圈固定圆半径
     private var inR = 0f
@@ -82,11 +89,10 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     //当前大拇指宽度
     private var curThumbWidth = 0f
 
-    //当前大拇指宽度
+    //大拇指最小宽度比例
     private var minThumbWidthRadio = 0.7f
 
-    //最大半径1.2倍
-    //这边应该是按最小半径为除数来算倍数
+    //大拇指最大半径1.3倍
     private var maxThumbWidthRadio = 1.3f
 
     //当前光环半径
@@ -98,6 +104,10 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     //点赞图标
     private val svgDrawable = VectorDrawableCompat.create(resources, R.drawable.ic_dianzan, null)
 
+//    private val svgSpreadDrawable =
+//        VectorDrawableCompat.create(resources, R.drawable.ic_dianzan, null)?.apply {
+//            setTint(Color.parseColor("#F98181"))
+//        }
 
     private val unSelectedPaint = Paint().apply {
         strokeWidth = 5.dp.toFloat()
@@ -120,7 +130,6 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         isAntiAlias = true
     }
 
-
     private val animatorListener = LvAnimatorListener()
 
     private val wholeAnimator = ValueAnimator.ofFloat(0f, wholeDuration).apply {
@@ -132,13 +141,22 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     private val expandThumbColorAnimator =
         ValueAnimator.ofArgb(expandThumbStartColor, expandThumbEndColor).apply {
             duration = expandThumbDuration.toLong()
-//        interpolator = LinearInterpolator()
             addUpdateListener {
-//                expandThumbCurColor = it as Int
-                Timber.d("color:${it}")
                 expandThumbPaint.color = it.animatedValue as Int
             }
         }
+
+    //每隔x秒弹出一个Thumb
+    private val addNewThumbSpan = 30f
+
+//    private val addNewThumbAnimator =
+//        ValueAnimator.ofInt(0, (wholeDuration / addNewThumbSpan).toInt()).apply {
+//            duration = wholeDuration.toLong()
+//            addUpdateListener {
+//                Timber.d("addNew:${(it.animatedValue as Int)}")
+//                addSpreadThumb((it.animatedValue as Int) * addNewThumbSpan)
+//            }
+//        }
 
 
     private fun initParams(context: Context, attrs: AttributeSet?) {
@@ -158,36 +176,46 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         centerY = measuredHeight - outRmax
 //        initThumbWidth = (measuredWidth / 2f - 70.dp).toInt()
         curThumbWidth = initThumbWidth
+
+
+        wholeWidth = measuredWidth.toFloat()
+        wholeHeight = measuredHeight.toFloat()
     }
 
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        Timber.d("Thread_draw:${Thread.currentThread().name}")
         //使坐标原点在canvas中心位置
         canvas.translate(centerX, centerY)
         Timber.d(currentState.toString())
         when (currentState) {
-            State.Origin -> {
+            State.UnLiked -> {
                 drawOriginView(canvas)
             }
             State.ShrinkThumb -> {
                 drawShrinkThumb(canvas)
             }
             State.ExpandThumb -> {
+                drawSpreadThumbs(canvas)
                 drawExpandThumb(canvas)
             }
             State.ExpandRing -> {
+                drawSpreadThumbs(canvas)
                 drawExpandRing(canvas)
             }
             State.ReboundThumb -> {
                 drawReboundThumb(canvas)
+            }
+            State.Liked -> {
+                drawFixedSelectedView(canvas)
             }
         }
     }
 
 
     private fun drawRestore() {
-        currentState = State.Origin
+        currentState = State.UnLiked
         invalidate()
     }
 
@@ -232,7 +260,6 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
 //            it.setBounds(-curThumbWidth.toInt(), -curThumbWidth.toInt(), curThumbWidth.toInt(), curThumbWidth.toInt())
 //            it.draw(canvas)
 //        }
-
     }
 
 
@@ -250,6 +277,53 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     }
 
 
+    private fun drawSpreadThumbs(canvas: Canvas) {
+        spreadThumbList.forEach {
+            if (!it.isAvailable) {
+                return@forEach
+            }
+            val drawable =
+                VectorDrawableCompat.create(resources, R.drawable.ic_dianzan, null)?.apply {
+                    setTint(Color.parseColor("#FE4144"))
+                }
+            drawable?.setBounds(
+                (it.curX - it.radius).toInt(),
+                (it.curY - it.radius).toInt(),
+                (it.curX + it.radius).toInt(),
+                (it.curY + it.radius).toInt(),
+            )
+            drawable?.draw(canvas)
+        }
+    }
+
+
+    data class SpreadThumbPath(
+        val startX: Float = 0f,
+        val startY: Float = 0f,
+        val endX: Float = 0f,
+        val endY: Float = 0f,
+        var curX: Float = 0f,
+        var curY: Float = 0f,
+        var radius: Float = 10.dp.toFloat(),
+        //or speed
+        //飞行的持续时间
+        var duration: Float = 500f,
+        //启动时，动画的进度
+        var startAnimVal: Float = 0f,
+        //是否可用，约等于超时到顶
+        var isAvailable: Boolean = true,
+    ) {
+        companion object {
+//            fun getRandomPath() =
+        }
+    }
+
+    var spreadThumbList = mutableListOf<SpreadThumbPath>()
+
+//    private fun s(){
+//
+//    }
+
     //复用已点赞的圆图标
     private fun drawFixedSelectedView(canvas: Canvas) {
         canvas.drawCircle(0f, 0f, expandThumbCurCircleR, expandThumbPaint)
@@ -265,10 +339,53 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     }
 
 
-    fun startSelectViewMotion() {
-//        resetState()
-        wholeAnimator.start()
+    private fun initSpreadThumbs() {
+        spreadThumbList.clear()
+        spreadThumbList.addAll(MutableList(20) {
+            getRandomSpreadThumb()
+        })
     }
+
+
+    private var addedNewThumNum = 0
+
+    private fun calSpreadThumbs(animatedValue: Float) {
+        if (animatedValue / addNewThumbSpan > addedNewThumNum) {
+            addedNewThumNum++
+            spreadThumbList.add(getRandomSpreadThumb(animatedValue))
+        }
+        spreadThumbList.forEach {
+            //到顶了就不画了
+            if (!it.isAvailable) {
+                return@forEach
+            }
+            if (animatedValue - it.startAnimVal > it.duration) {
+                it.isAvailable = false
+                return@forEach
+            }
+            val percent = (animatedValue - it.startAnimVal) / it.duration
+            it.curX = it.startX + (it.endX - it.startX) * percent
+            it.curY = it.startY + (it.endY - it.startY) * percent
+        }
+    }
+
+//
+//    private fun addSpreadThumb(startAnimVal:Float = 0f) {
+//        spreadThumbList.add(getRandomSpreadThumb(startAnimVal))
+//    }
+
+
+    private fun getRandomSpreadThumb(startAnimVal: Float = 0f) = SpreadThumbPath(
+        startX = 0f,
+        startY = 0f,
+        endX = Random.nextInt(wholeWidth.toInt()) - wholeWidth / 2,
+        endY = -wholeHeight + outRmax + 20.dp + Random.nextInt(50).dp,
+        curX = 0f,
+        curY = 0f,
+        radius = 15.dp.toFloat() + Random.nextInt(5),
+        duration = 500f + Random.nextInt(30),
+        startAnimVal = startAnimVal,
+    )
 
 
     inner class LvAnimatorListener : AnimatorUpdateListener {
@@ -277,35 +394,38 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
             Timber.d("animatedValue:$animatedValue")
             when (animatedValue) {
                 0f -> {
-                    currentState = State.Origin
+                    currentState = State.UnLiked
+//                    if (!addNewThumbAnimator.isRunning) {
+//                        addNewThumbAnimator.start()
+//                    }
                 }
                 in 0f..shrinkDuration -> {
+                    currentState = State.ShrinkThumb
                     //最小半径0.8倍
                     val percent: Float = animatedValue / shrinkDuration
                     Timber.d("percent:$percent")
-                    curThumbWidth = initThumbWidth - (1 - minThumbWidthRadio) * initThumbWidth * percent
-                    currentState = State.ShrinkThumb
+                    curThumbWidth =
+                        initThumbWidth - (1 - minThumbWidthRadio) * initThumbWidth * percent
                     invalidate()
                 }
-                expandThumbStartTime -> {
-
-                }
-                in expandThumbStartTime..expandThumbStartTime + expandThumbDuration -> {
+//                expandThumbStartTime -> {
+//
+//                }
+                in expandThumbStartTime..expandRingStartTime -> {
                     currentState = State.ExpandThumb
                     if (!expandThumbColorAnimator.isRunning) {
                         expandThumbColorAnimator.start()
                     }
-                    val percent = (animatedValue - expandThumbStartTime) / shrinkDuration
-                    Timber.d("percent:$percent")
+                    calSpreadThumbs(animatedValue)
+                    val percent = (animatedValue - expandThumbStartTime) / expandThumbDuration
                     curThumbWidth =
                         initThumbWidth * minThumbWidthRadio + (maxThumbWidthRadio - minThumbWidthRadio) * initThumbWidth * percent
-                    expandThumbCurCircleR =
-                        inR * (animatedValue - expandThumbStartTime) / expandThumbDuration
+                    expandThumbCurCircleR = inR * percent
                     Timber.d("curThumbWidth:${curThumbWidth}")
                     invalidate()
                 }
 
-                in expandRingStartTime..expandRingStartTime + expandRingDuration -> {
+                in expandRingStartTime..reboundThumbStartTime -> {
                     currentState = State.ExpandRing
                     val percent: Float = (animatedValue - expandRingStartTime) / expandRingDuration
                     Timber.d("percent:$percent")
@@ -314,7 +434,7 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
                     Timber.d("strokeWidth:${expandRingPaint.strokeWidth}")
                     invalidate()
                 }
-                in reboundThumbStartTime..reboundThumbStartTime + reboundThumbDuration -> {
+                in reboundThumbStartTime..reboundThumbStartTime + reboundThumbDuration - 1 -> {
                     currentState = State.ReboundThumb
                     val percent: Float =
                         (animatedValue - reboundThumbStartTime) / reboundThumbDuration
@@ -323,21 +443,53 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
                     Timber.d("curThumbWidth:${curThumbWidth}")
                     invalidate()
                 }
-
                 else -> {
-                    curThumbWidth = initThumbWidth
+                    currentState = State.Liked
+                    restoreData()
+                    invalidate()
                 }
 
             }
         }
     }
 
-//    inner class AnimatorListener : ObjectAnimator() {
+
+//    override fun onTouchEvent(event: MotionEvent): Boolean {
+//        return super.onTouchEvent(event)
 //
+//        when(event.action){
+//            MotionEvent.ACTION_DOWN
+//        }
+//
+//
+//        Timber.d("touch:${event.action}")
 //    }
+
+    fun restoreData() {
+//        currentState = State.UnLiked
+        curThumbWidth = initThumbWidth
+        addedNewThumNum = 0
+    }
+
 
     fun retore() {
         drawRestore()
+    }
+
+
+    fun startClickAnim() {
+//        resetState()
+        restoreData()
+        initSpreadThumbs()
+        wholeAnimator.start()
+    }
+
+
+    fun startLongClickAnim() {
+//        resetState()
+        restoreData()
+        initSpreadThumbs()
+        wholeAnimator.start()
     }
 
 

@@ -7,16 +7,16 @@
     android:orientation="vertical">
 
 
-    <com.example.littletreetest.pages.jingtu.view.LikeView
-        android:id="@+id/view_like"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_gravity="center_horizontal"
-        app:checkedColor="#ffff0000"
-        app:cirRadius="20dp"
-        app:cycleTime="10000"
-        app:unSelectCycleTime="300"
-        app:defaultColor="#ffcccccc"/>
+<!--    <com.example.littletreetest.pages.jingtu.view.LikeView-->
+<!--        android:id="@+id/view_like"-->
+<!--        android:layout_width="400dp"-->
+<!--        android:layout_height="400dp"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        app:checkedColor="#ffff0000"-->
+<!--        app:cirRadius="20dp"-->
+<!--        app:cycleTime="10000"-->
+<!--        app:unSelectCycleTime="300"-->
+<!--        app:defaultColor="#ffcccccc"/>-->
 
 
     <com.example.littletreetest.pages.jingtu.DianzanView
@@ -36,11 +36,6 @@
         android:text="restore_dianzan"
         android:layout_gravity="bottom"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_restore_like"
-        android:text="restore_like"
-        android:layout_gravity="bottom|right"/>
+
 
 </FrameLayout>
