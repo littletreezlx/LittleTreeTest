@@ -29,19 +29,20 @@ class DianzanFragment : BaseFragment() {
 //            binding.viewLike.isChecked = false
 //        }
 
-        binding.viewDianzan.setOnClickListener {
-            Timber.d("touch:click")
-            binding.viewDianzan.startClickAnim()
-        }
-        binding.viewDianzan.setOnLongClickListener {
-            Timber.d("touch:longclick")
-            binding.viewDianzan.startLongClickAnim()
-            true
-        }
+//        binding.viewDianzan.setOnClickListener {
+//            Timber.d("touch:click")
+//            binding.viewDianzan.startClickAnim()
+//        }
+
+//        binding.viewDianzan.setOnLongClickListener {
+//            Timber.d("touch:longclick")
+//            binding.viewDianzan.startLongClickAnim()
+//            true
+//        }
 
 
         binding.btnRestoreDianzan.setOnClickListener {
-            binding.viewDianzan.retore()
+            binding.viewDianzan.retoreUnLiked()
         }
     }
 
