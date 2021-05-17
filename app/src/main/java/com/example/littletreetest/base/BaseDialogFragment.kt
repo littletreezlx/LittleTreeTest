@@ -2,16 +2,10 @@ package com.example.littletreetest.base
 
 import android.content.Context
 import android.content.DialogInterface
-import android.graphics.Color
 import android.os.Bundle
 import android.view.*
-import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
 import com.example.littletreetest.R
-
 import timber.log.Timber
 import java.lang.ref.WeakReference
 

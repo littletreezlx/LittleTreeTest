@@ -4,10 +4,10 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
 
-    app:apl_angle_orientation="1"
-    app:apl_angle_x="30dp"
     app:apl_angle_height="30dp"
+    app:apl_angle_orientation="1"
     app:apl_angle_width="30dp"
+    app:apl_angle_x="30dp"
     app:apl_radius="6dp"
     app:apl_shadow_blur="10dp"
 

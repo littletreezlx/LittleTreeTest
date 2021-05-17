@@ -1,10 +1,8 @@
 package com.mixu.jingtu.common.ext
 
 import android.content.res.Configuration
-import android.graphics.Rect
 import android.os.Bundle
 import android.os.Looper
-import android.view.TouchDelegate
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -76,8 +74,6 @@ private fun showToastReally(message: String) {
 }
 
 
-
-
 /**
  * 判断当前设备是手机还是平板，代码来自 Google I/O App for Android
  *
@@ -135,8 +131,6 @@ fun View.setVisible() {
 fun View.setInvisible() {
     visibility = View.INVISIBLE
 }
-
-
 
 
 fun Fragment.setArguments(vararg arguments: Pair<String, Any>) {

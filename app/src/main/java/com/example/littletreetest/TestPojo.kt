@@ -1,3 +1,3 @@
 package com.example.littletreetest
 
-data class TestPojo(val name:String)
+data class TestPojo(val name: String)

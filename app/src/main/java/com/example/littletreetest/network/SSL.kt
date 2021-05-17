@@ -22,11 +22,17 @@ class SSL {
 
 
         fun getX509TrustManager(): X509TrustManager {
-            return object: X509TrustManager {
-                override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {
+            return object : X509TrustManager {
+                override fun checkClientTrusted(
+                    chain: Array<out X509Certificate>?,
+                    authType: String?
+                ) {
                 }
 
-                override fun checkServerTrusted(chain: Array<out X509Certificate>?, authType: String?) {
+                override fun checkServerTrusted(
+                    chain: Array<out X509Certificate>?,
+                    authType: String?
+                ) {
                 }
 
                 override fun getAcceptedIssuers(): Array<X509Certificate> {
@@ -37,7 +43,7 @@ class SSL {
 
 
         fun getTrustManager(): Array<TrustManager> {
-            return arrayOf<TrustManager>(object: X509TrustManager {
+            return arrayOf<TrustManager>(object : X509TrustManager {
 
                 override fun checkClientTrusted(
                     chain: Array<out X509Certificate>?,

@@ -1,6 +1,5 @@
 package com.example.littletreetest.base
 
-import android.Manifest
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -9,18 +8,11 @@ import android.view.WindowManager
 import androidx.activity.OnBackPressedDispatcherOwner
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
-import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.lang.ref.WeakReference
-import javax.inject.Inject
 
 
-
-open class BaseActivity: AppCompatActivity()
-    , OnBackPressedDispatcherOwner
-{
+open class BaseActivity : AppCompatActivity(), OnBackPressedDispatcherOwner {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +35,6 @@ open class BaseActivity: AppCompatActivity()
 //            onActivityBackPressed()
 //        }
     }
-
 
 
     //必要权限申请
@@ -73,7 +64,7 @@ open class BaseActivity: AppCompatActivity()
     override fun onDestroy() {
         super.onDestroy()
 //        EventBus.getDefault().unregister(this)
-        Timber.d("LittleTreeTest___Lifecycle: ${javaClass.simpleName} ___ onDestroy"  )
+        Timber.d("LittleTreeTest___Lifecycle: ${javaClass.simpleName} ___ onDestroy")
     }
 
 //    fun showLoading() {
@@ -112,10 +103,10 @@ open class BaseActivity: AppCompatActivity()
 //        return true
 //    }
 
-    var  currentFragment : WeakReference<Fragment>? = null
+    var currentFragment: WeakReference<Fragment>? = null
         set(value) {
-        field = value
-        Timber.d("LittleTreeTest___currentFragment: ${field?.get()}")
+            field = value
+            Timber.d("LittleTreeTest___currentFragment: ${field?.get()}")
         }
 
 
@@ -125,10 +116,10 @@ open class BaseActivity: AppCompatActivity()
 
 
     override fun onResume() {
-        Timber.d("LittleTreeTest___Lifecycle: ${javaClass.simpleName} ___ onResume"  )
+        Timber.d("LittleTreeTest___Lifecycle: ${javaClass.simpleName} ___ onResume")
         super.onResume()
 //        (App.appContext as App).currentActivity = WeakReference(this)
-        Timber.d("LittleTreeTest___CurrentActivity: ${javaClass.simpleName}"  )
+        Timber.d("LittleTreeTest___CurrentActivity: ${javaClass.simpleName}")
 //        updateSystemUiVisibility()
     }
 

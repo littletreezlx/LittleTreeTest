@@ -16,7 +16,7 @@ import java.io.File
 import kotlin.concurrent.thread
 
 
-fun dp2px(value: Float): Int{
+fun dp2px(value: Float): Int {
     return AutoSizeUtils.dp2px(MyApp.context, value)
 }
 
@@ -48,7 +48,6 @@ fun View.expandTouchRange() {
 }
 
 
-
 fun ImageView.loadCircleRes(file: File) {
     Glide.with(context).load(file)
         .apply(RequestOptions.bitmapTransform(CircleCrop()))
@@ -68,7 +67,7 @@ fun ImageView.loadRes(drawableRes: Int) {
 }
 
 
-fun TextView.setScrollable(){
+fun TextView.setScrollable() {
     movementMethod = ScrollingMovementMethod.getInstance()
 }
 
@@ -93,7 +92,7 @@ fun TextView.startAutoScroll(str: String, space: Long = 100) {
     setOnClickListener {
         t.interrupt()
         post {
-           text = str
+            text = str
         }
     }
 }

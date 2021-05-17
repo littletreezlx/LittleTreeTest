@@ -14,7 +14,7 @@ class MinusView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     var HstartX = 0f
     var HstartY = 0f
     var HendX = 0f
-    var HendY= 0f
+    var HendY = 0f
     //水平的线
 
     //垂直的线
@@ -57,9 +57,10 @@ class MinusView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
     private fun initView(context: Context, attrs: AttributeSet?) {
         attrs?.let {
-            val typedArray = context.obtainStyledAttributes(attrs, R.styleable.PlusView, 0,0)
+            val typedArray = context.obtainStyledAttributes(attrs, R.styleable.PlusView, 0, 0)
             val color = typedArray.getColor(R.styleable.PlusView_stroke_color, mPaintColor)
-            val strokeWidth = typedArray.getDimension(R.styleable.PlusView_stroke_width, mPaintWidth)
+            val strokeWidth =
+                typedArray.getDimension(R.styleable.PlusView_stroke_width, mPaintWidth)
             typedArray.recycle()
             mPaint.color = color
             mPaint.strokeWidth = strokeWidth

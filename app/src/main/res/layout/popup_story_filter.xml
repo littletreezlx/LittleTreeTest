@@ -1,5 +1,4 @@
-<com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -12,7 +11,7 @@
     app:apl_stroke_width="0.5dp"
     app:test="hhhhhhh">
 
-<!--    app:apl_shadow_color="#28000000"-->
+    <!--    app:apl_shadow_color="#28000000"-->
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -25,4 +24,4 @@
         android:layout_marginBottom="20dp" />
 
 
-</com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout >
+</com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout>

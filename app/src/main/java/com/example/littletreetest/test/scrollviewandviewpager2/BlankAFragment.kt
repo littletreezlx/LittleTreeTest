@@ -14,15 +14,14 @@ class BlankAFragment : BaseFragment() {
     private lateinit var binding: FragmentBlankABinding
 
     private var contentAdapter = TitleAdapter(
-            mutableListOf()
-        )
+        mutableListOf()
+    )
 
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentBlankABinding.bind(view)
         initRecyclerView()
     }
-
 
 
     private fun initRecyclerView() {
@@ -32,7 +31,7 @@ class BlankAFragment : BaseFragment() {
             setHasFixedSize(true)
         }
         val testList = mutableListOf<String>()
-        for (i in 0..5){
+        for (i in 0..5) {
             testList.add(i.toString())
         }
         contentAdapter.setList(testList)

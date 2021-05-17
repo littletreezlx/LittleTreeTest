@@ -1,15 +1,12 @@
 package com.mixu.jingtu.common.base
 
-import androidx.lifecycle.*
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 
 
 open class BaseViewModel : ViewModel() {
-
-
-
-
 
 
 //    val loginManager: LoginManager = ComponentHolder.appComponent.loginManager
@@ -100,9 +97,9 @@ fun <T> LiveData<LiveEvent<T>>.runOnce(owner: LifecycleOwner, job: (t: T) -> Uni
 
 
 //一次性操作，用于方法A需要等待方法B执行完成后(或者状态B的情况下)才能执行，主要用于点击操作
-fun LiveData<Boolean>.waitTrueThenRunOnce(owner: LifecycleOwner, job: ()-> Unit){
+fun LiveData<Boolean>.waitTrueThenRunOnce(owner: LifecycleOwner, job: () -> Unit) {
     this.observe(owner, Observer {
-        if (it == true){
+        if (it == true) {
             this.removeObservers(owner)
             job.invoke()
         }

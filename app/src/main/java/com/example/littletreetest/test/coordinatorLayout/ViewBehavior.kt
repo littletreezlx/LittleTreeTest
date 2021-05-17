@@ -3,12 +3,8 @@ package com.example.littletreetest.test.coordinatorLayout
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import android.widget.TextView
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.blankj.utilcode.util.ConvertUtils
-import com.blankj.utilcode.util.ScreenUtils
-import timber.log.Timber
 
 class ViewBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.Behavior<View>(
     context,

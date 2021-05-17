@@ -53,8 +53,8 @@
 
         />
 
-<!--        app:layout_behavior="@string/behavior_recyclerview"
--->
+    <!--        app:layout_behavior="@string/behavior_recyclerview"
+    -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

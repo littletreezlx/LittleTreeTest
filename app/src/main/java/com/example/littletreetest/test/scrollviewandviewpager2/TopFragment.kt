@@ -2,10 +2,8 @@ package com.example.littletreetest.test.scrollviewandviewpager2
 
 import android.os.Bundle
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
-import com.example.littletreetest.databinding.FragmentBlankABinding
 import com.example.littletreetest.databinding.FragmentTestTopBinding
 
 class TopFragment : BaseFragment() {
@@ -24,7 +22,6 @@ class TopFragment : BaseFragment() {
         binding = FragmentTestTopBinding.bind(view)
 
     }
-
 
 
 }

@@ -3,15 +3,12 @@ package com.example.littletreetest.pages.free
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navGraphViewModels
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentFree2Binding
-import com.example.littletreetest.databinding.FragmentFreeBinding
 import com.example.littletreetest.pages.SecondActivity
-import com.mixu.jingtu.common.ext.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject

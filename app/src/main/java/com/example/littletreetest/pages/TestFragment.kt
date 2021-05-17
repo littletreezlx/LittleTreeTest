@@ -8,8 +8,6 @@ import com.example.littletreetest.databinding.FragmentTestBinding
 import com.example.littletreetest.pages.ui.popupwindow.StoryFilterPopup
 import com.mixu.jingtu.common.ext.dp2px
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class TestFragment : BaseFragment() {
@@ -28,7 +26,7 @@ class TestFragment : BaseFragment() {
 
         binding.tvTest.setOnClickListener {
             val popup = StoryFilterPopup(requireContext())
-            popup.show(it, dp2px(220f) , 0)
+            popup.show(it, dp2px(220f), 0)
         }
     }
 }

@@ -3,7 +3,14 @@ package com.example.littletreetest.pages.jingtu.view;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-import static com.example.littletreetest.pages.jingtu.view.LikeView.*;
+import static com.example.littletreetest.pages.jingtu.view.LikeView.CHECKED_COLOR;
+import static com.example.littletreetest.pages.jingtu.view.LikeView.DEFAULT_COLOR;
+import static com.example.littletreetest.pages.jingtu.view.LikeView.DEFAULT_CYCLE_TIME;
+import static com.example.littletreetest.pages.jingtu.view.LikeView.DEFAULT_DOT_COLORS;
+import static com.example.littletreetest.pages.jingtu.view.LikeView.DEFAULT_RING_COLOR;
+import static com.example.littletreetest.pages.jingtu.view.LikeView.DEFAULT_UN_SELECT_CYCLE_TIME;
+import static com.example.littletreetest.pages.jingtu.view.LikeView.DOT_SIZE_SCALE;
+import static com.example.littletreetest.pages.jingtu.view.LikeView.RADIUS_INNER_SHAPE_SCALE;
 
 /**
  * @date: 2018/11/7
@@ -11,6 +18,7 @@ import static com.example.littletreetest.pages.jingtu.view.LikeView.*;
  */
 public class LikeViewBuilder {
 
+    public final Context mContext;
     private int defaultColor;
     private int checkedColor;
     private float lrGroupCRatio;
@@ -27,7 +35,6 @@ public class LikeViewBuilder {
     private int cycleTime;
     private int unSelectCycleTime;
     private boolean allowRandomDotColor;
-    public final Context mContext;
 
 
     public LikeViewBuilder(Context context) {
@@ -47,6 +54,7 @@ public class LikeViewBuilder {
         this.dotSizeScale = DOT_SIZE_SCALE;
         this.allowRandomDotColor = true;
     }
+
     /**
      * {@link  LikeView#setDefaultColor(int)}
      */
@@ -55,6 +63,7 @@ public class LikeViewBuilder {
         return this;
 
     }
+
     /**
      * {@link  LikeView#setCheckedColor(int)}
      */
@@ -63,6 +72,7 @@ public class LikeViewBuilder {
         return this;
 
     }
+
     /**
      * {@link  LikeView#setLrGroupCRatio(float)}
      */
@@ -70,6 +80,7 @@ public class LikeViewBuilder {
         this.lrGroupCRatio = lrGroupCRatio;
         return this;
     }
+
     /**
      * {@link  LikeView#setLrGroupBRatio(float)}
      */
@@ -77,6 +88,7 @@ public class LikeViewBuilder {
         this.lrGroupBRatio = lrGroupBRatio;
         return this;
     }
+
     /**
      * {@link  LikeView#setBGroupACRatio(float)}
      */
@@ -84,6 +96,7 @@ public class LikeViewBuilder {
         this.bGroupACRatio = bGroupACRatio;
         return this;
     }
+
     /**
      * {@link  LikeView#setTGroupBRatio(float)}
      */
@@ -91,6 +104,7 @@ public class LikeViewBuilder {
         this.tGroupBRatio = tGroupBRatio;
         return this;
     }
+
     /**
      * {@link  LikeView#setDefaultColor(int)}
      */
@@ -99,6 +113,7 @@ public class LikeViewBuilder {
         return this;
 
     }
+
     /**
      * {@link  LikeView#setCheckedIcon(Drawable)}
      */
@@ -107,6 +122,7 @@ public class LikeViewBuilder {
         return this;
 
     }
+
     /**
      * {@link  LikeView#setRadius(float)}
      */
@@ -114,6 +130,7 @@ public class LikeViewBuilder {
         this.radius = radius;
         return this;
     }
+
     /**
      * {@link  LikeView#setCycleTime(int)}
      */
@@ -121,6 +138,7 @@ public class LikeViewBuilder {
         this.cycleTime = cycleTime;
         return this;
     }
+
     /**
      * {@link  LikeView#setUnSelectCycleTime(int)}
      */
@@ -137,6 +155,7 @@ public class LikeViewBuilder {
         return this;
 
     }
+
     /**
      * {@link  LikeView#setDotSizeScale(int)}
      */
@@ -144,6 +163,7 @@ public class LikeViewBuilder {
         this.dotSizeScale = dotSizeScale;
         return this;
     }
+
     /**
      * {@link  LikeView#setDotColors(int[])}
      */
@@ -151,6 +171,7 @@ public class LikeViewBuilder {
         this.dotColors = dotColors;
         return this;
     }
+
     /**
      * {@link  LikeView#setRingColor(int)}
      */
@@ -158,6 +179,7 @@ public class LikeViewBuilder {
         this.ringColor = ringColor;
         return this;
     }
+
     /**
      * {@link  LikeView#setAllowRandomDotColor(boolean)}
      */

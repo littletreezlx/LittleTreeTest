@@ -4,7 +4,7 @@ package com.example.littletreetest.pages.jingtu.view;
  * @date: 2018/11/7
  * @author: LiRJ
  */
-public  final class State {
+public final class State {
     /**
      * 1.绘制心形并伴随缩小和颜色渐变
      */

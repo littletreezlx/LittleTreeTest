@@ -7,7 +7,6 @@ import okhttp3.Response
 class UserHeadInterceptor : Interceptor {
 
 
-
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain
             .request()

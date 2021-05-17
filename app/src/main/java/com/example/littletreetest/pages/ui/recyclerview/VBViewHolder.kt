@@ -9,7 +9,8 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 class VBViewHolder<VB : ViewBinding>(val binding: VB, view: View) : BaseViewHolder(view)
 
-abstract class BaseBindingAdapter<T, VB : ViewBinding>(data: MutableList<T>? = null) : BaseQuickAdapter<T, VBViewHolder<VB>>(0, data) {
+abstract class BaseBindingAdapter<T, VB : ViewBinding>(data: MutableList<T>? = null) :
+    BaseQuickAdapter<T, VBViewHolder<VB>>(0, data) {
 
     abstract fun createViewBinding(inflater: LayoutInflater, parent: ViewGroup): VB
 

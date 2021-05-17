@@ -31,10 +31,10 @@ import dagger.hilt.android.components.ActivityRetainedComponent
 abstract class UseCaseModule {
 
 
-  @Binds
-  abstract fun provideGetFreeUseCase(impl: GetFreeUseCaseImpl): GetFreeUseCase
+    @Binds
+    abstract fun provideGetFreeUseCase(impl: GetFreeUseCaseImpl): GetFreeUseCase
 
-  @Binds
-  abstract fun provideUpdateFreeUseCase(impl: UpdateFreeUseCaseImpl): UpdateFreeUseCase
+    @Binds
+    abstract fun provideUpdateFreeUseCase(impl: UpdateFreeUseCaseImpl): UpdateFreeUseCase
 
 }

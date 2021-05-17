@@ -32,10 +32,10 @@ class FunctionPopup(context: Context?) : PopupWindow() {
             )
         popupView.findViewById<RecyclerView>(R.id.rv_function).run {
             layoutManager = LinearLayoutManager(context)
-            adapter =functionAdapter
+            adapter = functionAdapter
         }
         functionAdapter.setOnItemClickListener { adapter, view, position ->
-            val functionItem  = functionAdapter.getItem(position)
+            val functionItem = functionAdapter.getItem(position)
             functionItem.function()
         }
         return popupView
@@ -47,11 +47,11 @@ class FunctionPopup(context: Context?) : PopupWindow() {
     }
 
 
-
     class FunctionItem(val text: String, var function: () -> Unit)
 
 
-    class FunctionAdapter(list: MutableList<FunctionItem>) : BaseQuickAdapter<FunctionItem, BaseViewHolder>(R.layout.item_popup_item_function, list) {
+    class FunctionAdapter(list: MutableList<FunctionItem>) :
+        BaseQuickAdapter<FunctionItem, BaseViewHolder>(R.layout.item_popup_item_function, list) {
 
         override fun convert(helper: BaseViewHolder, item: FunctionItem) {
             helper.run {

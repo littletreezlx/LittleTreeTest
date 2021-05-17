@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import com.bumptech.glide.Glide
-import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.littletreetest.R
 import com.example.littletreetest.databinding.ItemRecyclerviewTestBinding
 import timber.log.Timber

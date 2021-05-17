@@ -21,7 +21,6 @@
     </declare-styleable>
 
 
-
     <!--阴影-->
     <declare-styleable name="AnglePopupLayout">
         <attr name="apl_radius" format="dimension" />
@@ -44,21 +43,21 @@
 
 
     <declare-styleable name="LikeView">
-        <attr format="color" name="defaultColor"></attr>
-        <attr format="color" name="checkedColor"></attr>
-        <attr format="color" name="ringColor"></attr>
-        <attr format="dimension" name="cirRadius"></attr>
-        <attr format="integer" name="cycleTime"></attr>
-        <attr format="integer" name="unSelectCycleTime"></attr>
-        <attr format="reference" name="defaultLikeIconRes"></attr>
-        <attr format="reference" name="checkedLikeIconRes"></attr>
-        <attr format="float" name="lrGroupCRatio"></attr>
-        <attr format="float" name="lrGroupBRatio"></attr>
-        <attr format="float" name="bGroupACRatio"></attr>
-        <attr format="float" name="tGroupBRatio"></attr>
-        <attr format="integer" name="innerShapeScale"></attr>
-        <attr format="integer" name="dotSizeScale"></attr>
-        <attr format="boolean" name="allowRandomDotColor"></attr>
+        <attr name="defaultColor" format="color"></attr>
+        <attr name="checkedColor" format="color"></attr>
+        <attr name="ringColor" format="color"></attr>
+        <attr name="cirRadius" format="dimension"></attr>
+        <attr name="cycleTime" format="integer"></attr>
+        <attr name="unSelectCycleTime" format="integer"></attr>
+        <attr name="defaultLikeIconRes" format="reference"></attr>
+        <attr name="checkedLikeIconRes" format="reference"></attr>
+        <attr name="lrGroupCRatio" format="float"></attr>
+        <attr name="lrGroupBRatio" format="float"></attr>
+        <attr name="bGroupACRatio" format="float"></attr>
+        <attr name="tGroupBRatio" format="float"></attr>
+        <attr name="innerShapeScale" format="integer"></attr>
+        <attr name="dotSizeScale" format="integer"></attr>
+        <attr name="allowRandomDotColor" format="boolean"></attr>
     </declare-styleable>
 
 

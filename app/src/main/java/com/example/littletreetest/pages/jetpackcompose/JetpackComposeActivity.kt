@@ -18,7 +18,6 @@ class JetpackComposeActivity : ComponentActivity() {
 }
 
 
-
 //@Composable
 //fun Greeting() {
 //    Column(

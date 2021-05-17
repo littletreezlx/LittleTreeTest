@@ -2,7 +2,8 @@ package com.example.littletreetest.pages.jingtu
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.example.littletreetest.pages.free.FreeParentViewModel
 import com.example.littletreetest.pages.free.FreeRepo
 import com.mixu.jingtu.common.base.LiveEvent
@@ -21,7 +22,6 @@ class GamePagesViewModel @ViewModelInject constructor(
     fun toShowBottomPopup(toShow: Boolean) {
         _toShowBottomPopup.value = LiveEvent(toShow)
     }
-
 
 
     private val _toTabAt = MutableLiveData<LiveEvent<Int>>()

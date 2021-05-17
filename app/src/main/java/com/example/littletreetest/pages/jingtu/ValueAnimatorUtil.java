@@ -19,7 +19,7 @@ public class ValueAnimatorUtil {
     }
 
 
-    public static boolean check(){
+    public static boolean check() {
         return ValueAnimator.areAnimatorsEnabled();
     }
 
@@ -29,7 +29,7 @@ public class ValueAnimatorUtil {
     public static void resetDurationScale() {
         try {
             float res = getDurationScale();
-            Timber.d(res +"");
+            Timber.d(res + "");
             getField().setFloat(null, 1);
         } catch (Exception e) {
             e.printStackTrace();

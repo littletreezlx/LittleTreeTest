@@ -10,6 +10,8 @@ import java.util.List;
 
 public class NodeTreeAdapter extends BaseNodeAdapter {
 
+    public static final int EXPAND_COLLAPSE_PAYLOAD = 110;
+
     public NodeTreeAdapter() {
         super();
         addNodeProvider(new FirstProvider());
@@ -29,6 +31,4 @@ public class NodeTreeAdapter extends BaseNodeAdapter {
         }
         return -1;
     }
-
-    public static final int EXPAND_COLLAPSE_PAYLOAD = 110;
 }

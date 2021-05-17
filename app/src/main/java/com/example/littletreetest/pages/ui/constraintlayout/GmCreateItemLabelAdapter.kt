@@ -24,7 +24,7 @@ class GmCreateItemLabelAdapter(list: MutableList<String>) :
 
     override fun convertUnSelected(helper: BaseViewHolder, item: String) {
         helper.run {
-            setBackgroundResource(R.id.tv_label,  R.drawable.background_f3f4f5_r10)
+            setBackgroundResource(R.id.tv_label, R.drawable.background_f3f4f5_r10)
             setTextColor(R.id.tv_label, Color.parseColor("#707070"))
         }
     }

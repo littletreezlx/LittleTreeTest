@@ -34,7 +34,6 @@ open class SimpleMultipleSelectableAdapter<T>(
     }
 
 
-
     override fun convert(holder: BaseViewHolder, item: T) {
         if (item.isSelected) {
             convertSelected(holder, item)
@@ -57,7 +56,7 @@ open class SimpleMultipleSelectableAdapter<T>(
 
 
     fun setSelected(position: Int) {
-        if (selectedSet.size == maxSelectable){
+        if (selectedSet.size == maxSelectable) {
             return
         }
         selectedSet.add(position)
@@ -77,7 +76,6 @@ open class SimpleMultipleSelectableAdapter<T>(
     private fun isPositionSelected(position: Int): Boolean {
         return selectedSet.contains(position)
     }
-
 
 
     //需要全选的列表一定没有选择数量限制，先不改了

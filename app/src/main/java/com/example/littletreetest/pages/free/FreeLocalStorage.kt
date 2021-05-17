@@ -7,7 +7,7 @@ import javax.inject.Singleton
 @Singleton
 class FreeLocalStorage @Inject constructor() {
 
-     var freeLocal: Free?  = null
+    var freeLocal: Free? = null
 
 
 //    fun getFreeLocal(): Free{

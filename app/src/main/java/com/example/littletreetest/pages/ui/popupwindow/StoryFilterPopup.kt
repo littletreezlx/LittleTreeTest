@@ -2,13 +2,8 @@ package com.example.littletreetest.pages.ui.popupwindow
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.Rect
-import android.os.Build
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.PopupWindow
-import android.widget.RelativeLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
@@ -17,11 +12,9 @@ import com.example.littletreetest.base.ui.SimpleSingleSelectableAdapter
 import com.example.littletreetest.databinding.PopupStoryFilterBinding
 import com.mixu.jingtu.common.component.GridLayoutDecoration
 import com.mixu.jingtu.common.ext.dp2px
-import razerdp.basepopup.BasePopup
-import timber.log.Timber
 
 
-class StoryFilterPopup( val context: Context) : BaseAnglePopupWindow() {
+class StoryFilterPopup(val context: Context) : BaseAnglePopupWindow() {
 
     private lateinit var filterAdapter: StoryFilterAdapter
 

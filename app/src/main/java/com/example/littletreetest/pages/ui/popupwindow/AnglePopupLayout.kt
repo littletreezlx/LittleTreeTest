@@ -7,7 +7,6 @@ import android.widget.FrameLayout
 import com.example.littletreetest.R
 import com.mixu.jingtu.common.ext.dp2px
 import timber.log.Timber
-import kotlin.math.cosh
 
 class AnglePopupLayout(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
 

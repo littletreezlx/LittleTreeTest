@@ -70,12 +70,15 @@ class ScrollViewAndViewPager2Fragment : BaseFragment() {
 //            binding.fragmentContainer.layoutParams = lp
 //        }
 
-        childFragmentManager.beginTransaction().replace(R.id.fragment_container, BlankAFragment()).commit()
+        childFragmentManager.beginTransaction().replace(R.id.fragment_container, BlankAFragment())
+            .commit()
         topTitleAdapter.setSingleItemClickListener {
-            if (it == 0){
-                childFragmentManager.beginTransaction().replace(R.id.fragment_container, BlankAFragment()).commit()
-            }else{
-                childFragmentManager.beginTransaction().replace(R.id.fragment_container, BlankBFragment()).commit()
+            if (it == 0) {
+                childFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, BlankAFragment()).commit()
+            } else {
+                childFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, BlankBFragment()).commit()
             }
 //            binding.fragmentContainer.currentItem = it
         }

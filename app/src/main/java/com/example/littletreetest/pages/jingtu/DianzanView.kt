@@ -487,7 +487,7 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         startAnimVal = startAnimVal,
 //        color = getRandomSpreadColor(),
         drawable = VectorDrawableCompat.create(resources, R.drawable.ic_dianzan, null)!!.apply {
-            setTint( getRandomSpreadColor())
+            setTint(getRandomSpreadColor())
         }
     )
 

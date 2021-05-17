@@ -1,11 +1,9 @@
 package com.example.littletreetest.pages.free
 
-import androidx.databinding.DataBindingUtil
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
 import com.example.littletreetest.R
 import com.example.littletreetest.databinding.ItemFreeBinding
-import org.jetbrains.annotations.NotNull
 
 
 class FreeAdapter(list: MutableList<String>) :

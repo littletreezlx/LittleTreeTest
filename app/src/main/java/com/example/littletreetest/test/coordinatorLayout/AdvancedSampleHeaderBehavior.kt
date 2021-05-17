@@ -7,10 +7,9 @@ import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.core.widget.NestedScrollView
-import com.google.android.material.appbar.AppBarLayout
 
 
-class  AdvancedSampleHeaderBehavior<T: View>(context: Context?, attrs: AttributeSet?) :
+class AdvancedSampleHeaderBehavior<T : View>(context: Context?, attrs: AttributeSet?) :
 
     CoordinatorLayout.Behavior<T>(
         context,
@@ -140,8 +139,6 @@ class  AdvancedSampleHeaderBehavior<T: View>(context: Context?, attrs: Attribute
             }
         }
     }
-
-
 
 
     private var viewOffsetHelper: ViewOffsetHelper? = null

@@ -28,7 +28,6 @@ class RecyclerViewRepo @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
 
-
     suspend fun addData() = flow {
         val newData = RvItemDataModel(localData.size.toString())
         localData.add(newData)
@@ -37,14 +36,14 @@ class RecyclerViewRepo @Inject constructor(
 
 
     suspend fun removeData() = flow {
-        localData.removeAt(localData.size-1)
+        localData.removeAt(localData.size - 1)
         emit(DataResult.Success(localData))
     }.flowOn(Dispatchers.IO)
 
 
     suspend fun removeHistory() = flow {
         Timber.d(localData.toString())
-        localData.subList(0,10).clear()
+        localData.subList(0, 10).clear()
         Timber.d(localData.toString())
         emit(DataResult.Success(localData))
     }.flowOn(Dispatchers.IO)

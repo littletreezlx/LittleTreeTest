@@ -7,7 +7,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class LinearLayoutBehavior extends CoordinatorLayout.Behavior<LinearLayout> {
 

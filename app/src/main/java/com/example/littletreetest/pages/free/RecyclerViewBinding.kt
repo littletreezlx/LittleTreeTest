@@ -19,7 +19,6 @@ package com.example.littletreetest.pages.free
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 //@BindingAdapter("adapter")
 //fun bindAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {
@@ -41,9 +40,9 @@ import com.chad.library.adapter.base.viewholder.BaseViewHolder
 
 @BindingAdapter("adapterList")
 inline fun <T> bindAdapterDataList(view: RecyclerView, adapterList: Collection<T>) {
-    adapterList.let { data->
+    adapterList.let { data ->
         view.adapter?.let {
-            if (it is BaseQuickAdapter<*, *>){
+            if (it is BaseQuickAdapter<*, *>) {
                 (it as BaseQuickAdapter<T, *>).setList(data)
             }
         }

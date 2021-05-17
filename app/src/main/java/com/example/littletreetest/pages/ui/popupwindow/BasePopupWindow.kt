@@ -1,6 +1,5 @@
 package com.example.littletreetest.pages.ui.popupwindow
 
-import android.content.Context
 import android.graphics.Rect
 import android.os.Build
 import android.view.Gravity

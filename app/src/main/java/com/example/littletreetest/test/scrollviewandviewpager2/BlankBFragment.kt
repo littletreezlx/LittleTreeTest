@@ -3,7 +3,6 @@ package com.example.littletreetest.test.scrollviewandviewpager2
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.blankj.utilcode.util.ScreenUtils
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentBlankABinding
@@ -26,7 +25,6 @@ class BlankBFragment : BaseFragment() {
     }
 
 
-
     private fun initRecyclerView() {
 
 //        binding.rvContent.post {
@@ -41,7 +39,7 @@ class BlankBFragment : BaseFragment() {
             adapter = contentAdapter
         }
         val testList = mutableListOf<String>()
-        for (i in 0..20){
+        for (i in 0..20) {
             testList.add(i.toString())
         }
         contentAdapter.setList(testList)

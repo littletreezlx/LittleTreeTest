@@ -8,7 +8,6 @@ import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentMockjingtuGameBinding
-import com.example.littletreetest.pages.free.*
 import com.mixu.jingtu.common.base.runOnce
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber

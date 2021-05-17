@@ -12,14 +12,13 @@
     <item
         android:width="5dp"
         android:height="4dp"
+        android:bottom="3dp"
         android:drawable="@drawable/icon_j"
         android:left="9dp"
         android:right="2dp"
         android:top="7dp"
-        android:bottom="3dp"
 
         />
-
 
 
 </layer-list>

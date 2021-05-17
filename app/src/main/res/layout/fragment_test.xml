@@ -34,10 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="test"
-        android:textSize="30dp"
         android:layout_marginLeft="80dp"
         android:background="#777777"
-        />
+        android:text="test"
+        android:textSize="30dp" />
 
 </FrameLayout>

@@ -2,15 +2,11 @@ package com.example.littletreetest.pages
 
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavDirections
-import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentMainBinding
-import com.example.littletreetest.pages.free.Free
-import com.example.littletreetest.pages.free.FreeFragmentDirections
 
 class MainFragment : BaseFragment() {
 

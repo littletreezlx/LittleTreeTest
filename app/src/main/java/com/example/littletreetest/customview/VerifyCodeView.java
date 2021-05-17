@@ -13,10 +13,11 @@ import com.example.littletreetest.R;
 
 
 public class VerifyCodeView extends RelativeLayout {
+    private static int MAX = 4;
     private EditText editText;
     private TextView[] textViews;
-    private static int MAX = 4;
     private String inputContent;
+    private InputCompleteListener inputCompleteListener;
 
     public VerifyCodeView(Context context) {
         this(context, null);
@@ -76,11 +77,12 @@ public class VerifyCodeView extends RelativeLayout {
         });
     }
 
-
-    private InputCompleteListener inputCompleteListener;
-
     public void setInputCompleteListener(InputCompleteListener inputCompleteListener) {
         this.inputCompleteListener = inputCompleteListener;
+    }
+
+    public String getEditContent() {
+        return inputContent;
     }
 
     public interface InputCompleteListener {
@@ -88,10 +90,6 @@ public class VerifyCodeView extends RelativeLayout {
         void inputComplete();
 
         void invalidContent();
-    }
-
-    public String getEditContent() {
-        return inputContent;
     }
 
 }

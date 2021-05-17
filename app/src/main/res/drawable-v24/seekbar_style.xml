@@ -5,17 +5,17 @@
     <item android:id="@android:id/background">
         <shape>
             <corners android:radius="10dp" />
-<!--            <gradient-->
-<!--                    android:startColor="#F3F4F5"-->
-<!--                    android:centerColor="#F3F4F5"-->
-<!--                    android:centerY="0.75"-->
-<!--                    android:endColor="#F3F4F5"-->
-<!--                    android:angle="270"-->
-<!--            />-->
+            <!--            <gradient-->
+            <!--                    android:startColor="#F3F4F5"-->
+            <!--                    android:centerColor="#F3F4F5"-->
+            <!--                    android:centerY="0.75"-->
+            <!--                    android:endColor="#F3F4F5"-->
+            <!--                    android:angle="270"-->
+            <!--            />-->
 
-<!--            <solid android:color="#707070"/>-->
+            <!--            <solid android:color="#707070"/>-->
 
-            <solid android:color="#F3F4F5"/>
+            <solid android:color="#F3F4F5" />
 
 
         </shape>
@@ -26,12 +26,11 @@
             <shape>
                 <corners android:radius="10dp" />
                 <gradient
-                        android:startColor="#80ffd300"
-                        android:centerColor="#80ffb600"
-                        android:centerY="0.75"
-                        android:endColor="#a0ffcb00"
-                        android:angle="270"
-                />
+                    android:angle="270"
+                    android:centerColor="#80ffb600"
+                    android:centerY="0.75"
+                    android:endColor="#a0ffcb00"
+                    android:startColor="#80ffd300" />
             </shape>
         </clip>
     </item>
@@ -41,14 +40,14 @@
         <clip>
             <shape>
                 <corners android:radius="10dp" />
-<!--                <gradient-->
-<!--                        android:startColor="#3D4456"-->
-<!--                        android:centerColor="#3D4456"-->
-<!--                        android:centerY="0.75"-->
-<!--                        android:endColor="#3D4456"-->
-<!--                        android:angle="270"-->
-<!--                />-->
-                <solid android:color="#3f3d56"/>
+                <!--                <gradient-->
+                <!--                        android:startColor="#3D4456"-->
+                <!--                        android:centerColor="#3D4456"-->
+                <!--                        android:centerY="0.75"-->
+                <!--                        android:endColor="#3D4456"-->
+                <!--                        android:angle="270"-->
+                <!--                />-->
+                <solid android:color="#3f3d56" />
             </shape>
         </clip>
     </item>

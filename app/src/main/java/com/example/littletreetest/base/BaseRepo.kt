@@ -1,9 +1,7 @@
 package com.mixu.jingtu.common.base
 
 
-import java.io.File
-
-abstract class BaseRepo{
+abstract class BaseRepo {
 
 //    var trpgApi: TrpgApi = ComponentHolder.appComponent.retrofit.create(TrpgApi::class.java)
 //

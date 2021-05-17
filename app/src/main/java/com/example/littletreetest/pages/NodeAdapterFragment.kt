@@ -18,7 +18,6 @@ class NodeAdapterFragment : BaseFragment() {
     private val treeAdapter: NodeTreeAdapter =
         NodeTreeAdapter()
 
-    
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

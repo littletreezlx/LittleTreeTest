@@ -8,7 +8,7 @@ object SpUtil {
 
     private const val IS_GM = "IS_GM"
 
-    fun getInstance(): SpUtil{
+    fun getInstance(): SpUtil {
         return this
     }
 

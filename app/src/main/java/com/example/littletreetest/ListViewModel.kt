@@ -1,9 +1,6 @@
 package com.example.littletreetest
 
-import android.util.Log
 import androidx.lifecycle.*
-import kotlinx.coroutines.delay
-import kotlin.properties.Delegates
 
 class ListViewModel : ViewModel() {
 
