@@ -8,6 +8,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.animation.LinearInterpolator
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.example.littletreetest.R
 import com.mixu.jingtu.common.ext.dp
@@ -52,6 +53,10 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         //最终点赞状态
         object Liked : State()
 
+
+        override fun toString(): String {
+            return this.javaClass.toString()
+        }
     }
 
     var currentState: State = State.UnLiked
@@ -86,8 +91,9 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
 
 
     //Color!!!
-    //    private val unSelectedColor = Color.parseColor("#E8E8E8")
-    private val unSelectedColor = Color.parseColor("#FFFFFF")
+    private val unLikedColor = Color.parseColor("#E8E8E8")
+
+    private val likededColor = Color.parseColor("#F88181")
 
     private val expandThumbCircleStartColor = Color.parseColor("#E8E8E8")
 
@@ -147,7 +153,6 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     private var initCircleStrokeWidth = 1.dp.toFloat()
 
 
-    //    private var curRingStrokeWidth = initRingStrokeWidth
     //点赞图标
     private val svgDrawable = VectorDrawableCompat.create(resources, R.drawable.ic_dianzan, null)
 
@@ -164,7 +169,7 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     private val unSelectedPaint = Paint().apply {
         strokeWidth = initCircleStrokeWidth
         style = Paint.Style.STROKE
-        color = Color.parseColor("#FFFFFF")
+        color = unLikedColor
         isAntiAlias = true
     }
 
@@ -182,24 +187,28 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         isAntiAlias = true
     }
 
-//    private val animatorListener = LvAnimatorListener()
+    private val likedPaint = Paint().apply {
+        strokeWidth = 1.dp.toFloat()
+        style = Paint.Style.FILL_AND_STROKE
+        color = likededColor
+        isAntiAlias = true
+    }
 
     private val wholeAnimator = ValueAnimator.ofFloat(0f, wholeDuration).apply {
         duration = wholeDuration.toLong()
-//        interpolator = LinearInterpolator()
-        addUpdateListener(LvAnimatorListener())
-        addListener(object :Animator.AnimatorListener{
+        interpolator = LinearInterpolator()
+        addUpdateListener(SingleClickAnimatorListener())
+        addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator?) {
                 Timber.d("animation: Start")
             }
 
             override fun onAnimationEnd(animation: Animator?) {
                 Timber.d("animation: Stop")
-                retoreLiked()
-                if (isOnLongClicked){
+                if (isOnLongClicked) {
                     spreadThumbColorAnimator.start()
-                }else{
-
+                } else {
+                    restoreLiked()
                 }
             }
 
@@ -217,6 +226,7 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     private val expandThumbColorAnimator =
         ValueAnimator.ofArgb(expandThumbCircleStartColor, expandThumbCircleEndColor).apply {
             duration = expandThumbDuration.toLong()
+            interpolator = LinearInterpolator()
             addUpdateListener {
                 expandThumbInCirclePaint.color = it.animatedValue as Int
             }
@@ -226,27 +236,32 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     //长按动画默认关闭时间，
     private val defaultStopTime = 30000f
 
+    var lastTime = 0f
+
     //长按持续发射大拇指的背景
     private val spreadThumbColorAnimator =
-        ValueAnimator.ofFloat(wholeDuration, defaultStopTime + defaultStopTime).apply {
+        ValueAnimator.ofFloat(wholeDuration, wholeDuration + defaultStopTime).apply {
             duration = defaultStopTime.toLong()
+            interpolator = LinearInterpolator()
             addUpdateListener {
                 Timber.d("animatedValue: ${it.animatedValue}")
                 currentState = State.JustSpreadThumb
                 val passedTime = it.animatedValue as Float
+                lastTime = passedTime
+                currentAnimPassedTime = passedTime
                 calSpreadThumbs(passedTime)
                 invalidate()
             }
-            addListener(object :Animator.AnimatorListener{
+            addListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(animation: Animator?) {
                 }
 
                 override fun onAnimationEnd(animation: Animator?) {
-                    retoreLiked()
+                    restoreLiked()
                 }
 
                 override fun onAnimationCancel(animation: Animator?) {
-                    retoreLiked()
+                    restoreLiked()
                 }
 
                 override fun onAnimationRepeat(animation: Animator?) {
@@ -289,7 +304,7 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
         super.onDraw(canvas)
         //使坐标原点在canvas中心位置
         canvas.translate(centerX, centerY)
-        Timber.d(currentState.toString())
+        Timber.d("state: ${currentState}")
         when (currentState) {
             State.UnLiked -> {
                 drawOriginView(canvas)
@@ -322,23 +337,10 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
                 drawFixedSelectedView(canvas)
             }
             State.Liked -> {
-                Timber.d("drawLiked")
-                drawFixedSelectedView(canvas)
+                drawLikedView(canvas)
             }
         }
     }
-
-
-//    private fun drawRestore() {
-//        currentState = State.UnLiked
-//        invalidate()
-//    }
-//
-//
-//    private fun drawRestore() {
-//        currentState = State.Liked
-//        invalidate()
-//    }
 
 
     private fun drawOriginView(canvas: Canvas) {
@@ -398,20 +400,29 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
             if (!it.isAvailable) {
                 return@forEach
             }
-            val drawable =
-                VectorDrawableCompat.create(resources, R.drawable.ic_dianzan, null)?.apply {
-                    setTint(it.color)
-                }
-            drawable?.setBounds(
-                (it.curX - it.radius).toInt(),
-                (it.curY - it.radius).toInt(),
-                (it.curX + it.radius).toInt(),
-                (it.curY + it.radius).toInt(),
+            it.drawable.setBounds(
+                it.curX - it.radius,
+                it.curY - it.radius,
+                it.curX + it.radius,
+                it.curY + it.radius,
             )
-            drawable?.draw(canvas)
+            it.drawable.draw(canvas)
         }
     }
 
+
+    private fun drawLikedView(canvas: Canvas) {
+        canvas.drawCircle(0f, 0f, inR, likedPaint)
+        svgDrawable?.let {
+            it.setBounds(
+                -initThumbR.toInt(),
+                -initThumbR.toInt(),
+                initThumbR.toInt(),
+                initThumbR.toInt()
+            )
+            it.draw(canvas)
+        }
+    }
 
     //复用已点赞的圆图标
     private fun drawFixedSelectedView(canvas: Canvas) {
@@ -437,14 +448,11 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
 
 
     private fun calSpreadThumbs(animatedValue: Float) {
-//        if (animatedValue / addNewThumbSpan > addedNewThumNum) {
-//            addedNewThumNum++
-//            spreadThumbList.add(getRandomSpreadThumb(animatedValue))
-//        }
         if (animatedValue - lastSpreadThumbTime > randomCreateSpreadThumbSpan) {
             spreadThumbList.add(getRandomSpreadThumb(animatedValue))
             lastSpreadThumbTime = animatedValue
             randomCreateSpreadThumbSpan = 25f + Random.nextInt(50)
+            Timber.d("LLL: ${spreadThumbList.size}")
         }
         spreadThumbList.forEach {
             //到顶了就不画了
@@ -456,10 +464,8 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
                 return@forEach
             }
             val percent = (animatedValue - it.startAnimVal) / it.duration
-
-            Timber.d("EEE:${percent}")
-            it.curX = it.startX + (it.endX - it.startX) * percent
-            it.curY = it.startY + (it.endY - it.startY) * percent
+            it.curX = it.startX + ((it.endX - it.startX) * percent).toInt()
+            it.curY = it.startY + ((it.endY - it.startY) * percent).toInt()
         }
     }
 
@@ -470,16 +476,19 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
 
 
     private fun getRandomSpreadThumb(startAnimVal: Float = 0f) = SpreadThumbPath(
-        startX = 0f,
-        startY = 0f,
-        endX = Random.nextInt(wholeWidth.toInt()) - wholeWidth / 2,
-        endY = -wholeHeight + outRmax + 20.dp + Random.nextInt(50).dp,
-        curX = 0f,
-        curY = 0f,
-        radius = 5.dp.toFloat() + Random.nextInt(4),
+        startX = 0,
+        startY = 0,
+        endX = Random.nextInt(wholeWidth.toInt()) - (wholeWidth / 2).toInt(),
+        endY = (-wholeHeight + outRmax + 20.dp + Random.nextInt(50).dp).toInt(),
+        curX = 0,
+        curY = 0,
+        radius = 5.dp + Random.nextInt(4),
         duration = 450f + Random.nextInt(100),
         startAnimVal = startAnimVal,
-        color = getRandomSpreadColor()
+//        color = getRandomSpreadColor(),
+        drawable = VectorDrawableCompat.create(resources, R.drawable.ic_dianzan, null)!!.apply {
+            setTint( getRandomSpreadColor())
+        }
     )
 
 
@@ -496,7 +505,7 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
     }
 
 
-    inner class LvAnimatorListener : AnimatorUpdateListener {
+    inner class SingleClickAnimatorListener : AnimatorUpdateListener {
         override fun onAnimationUpdate(animation: ValueAnimator) {
             val animatedValue = animation.animatedValue as Float
             currentAnimPassedTime = animatedValue
@@ -563,7 +572,7 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
                 }
 
                 // -1是为了留like的状态
-                in reShrinkThumbStartTime..reShrinkThumbStartTime + reShrinkThumbDuration -1 -> {
+                in reShrinkThumbStartTime..reShrinkThumbStartTime + reShrinkThumbDuration -> {
                     currentState = State.ReExpandThumb
                     val percent: Float =
                         (animatedValue - reShrinkThumbStartTime) / reShrinkThumbDuration
@@ -572,9 +581,9 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
                     calSpreadThumbs(animatedValue)
                 }
 
-                else -> {
-                    retoreLiked()
-                }
+//                else -> {
+//                    restoreLiked()
+//                }
             }
             invalidate()
         }
@@ -593,49 +602,60 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
 //    }
 
 
-
-
-    fun restoreData() {
-//        currentState = State.UnLiked
+    private fun restoreData() {
         curThumbWidth = initThumbR
+        initSpreadThumbs()
+        currentAnimPassedTime = 0f
         lastSpreadThumbTime = 0f
     }
 
 
-    fun retoreUnLiked() {
-        restoreData()
+    fun restoreUnLiked() {
+//        restoreData()
         currentState = State.UnLiked
         invalidate()
     }
 
 
-    fun retoreLiked() {
-        restoreData()
+    fun restoreLiked() {
+//        restoreData()
         currentState = State.Liked
         invalidate()
     }
 
 
     fun startClickAnim() {
-//        resetState()
         restoreData()
-        initSpreadThumbs()
         wholeAnimator.start()
     }
 
 
-    fun stopLongClickAnim() {
+    private fun stopLongClickAnim() {
         wholeAnimator.cancel()
         spreadThumbColorAnimator.cancel()
-        retoreLiked()
+        restoreLiked()
     }
 
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                isOnLongClicked = true
-                startClickAnim()
+                when (currentState) {
+                    State.UnLiked -> {
+                        onSelectedFun.invoke()
+                        isOnLongClicked = true
+                        startClickAnim()
+                    }
+                    State.Liked -> {
+                        onUnSelectedFun.invoke()
+                        restoreData()
+                        restoreUnLiked()
+                    }
+                    //不允许点击中间状态
+                    else -> {
+                        return true
+                    }
+                }
                 Timber.d("touch: down")
             }
             MotionEvent.ACTION_CANCEL -> {
@@ -644,6 +664,8 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
             MotionEvent.ACTION_UP -> {
                 isOnLongClicked = false
                 Timber.d("touch: up")
+                Timber.d("touch: $currentAnimPassedTime")
+                Timber.d("touch: $wholeDuration")
                 if (currentAnimPassedTime < wholeDuration) {
                     return true
                 }
@@ -651,28 +673,33 @@ class DianzanView(context: Context, attrs: AttributeSet?) : View(context, attrs)
             }
         }
         return true
-//        return super.onTouchEvent(event)
     }
 
 
+    var onSelectedFun: () -> Unit = {}
+
+    var onUnSelectedFun: () -> Unit = {}
+
+
     data class SpreadThumbPath(
-        val startX: Float = 0f,
-        val startY: Float = 0f,
-        val endX: Float = 0f,
-        val endY: Float = 0f,
-        var curX: Float = 0f,
-        var curY: Float = 0f,
-        var radius: Float = 5.dp.toFloat(),
+        val startX: Int = 0,
+        val startY: Int = 0,
+        val endX: Int = 0,
+        val endY: Int = 0,
+        var curX: Int = 0,
+        var curY: Int = 0,
+        var radius: Int = 5.dp,
         //or speed
         //飞行的持续时间
         var duration: Float = 450f,
         //启动时，动画的进度
         var startAnimVal: Float = 0f,
 
-        var color: Int = Color.parseColor("#FB2127"),
+//        var color: Int = Color.parseColor("#FB2127"),
 
         var alpha: Boolean = true,
 
+        var drawable: VectorDrawableCompat,
         //是否可用，约等于超时到顶
         var isAvailable: Boolean = true,
 

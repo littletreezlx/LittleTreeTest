@@ -30,9 +30,14 @@ class DianzanFragment : BaseFragment() {
 //        }
 
 //        binding.viewDianzan.setOnClickListener {
-//            Timber.d("touch:click")
+//            Timber.d("touch:setOnClickListener")
 //            binding.viewDianzan.startClickAnim()
 //        }
+        binding.viewDianzan.setOnTouchListener { v, event ->
+            Timber.d("touch:setOnTouchListener")
+//            binding.viewDianzan.startClickAnim()
+            false
+        }
 
 //        binding.viewDianzan.setOnLongClickListener {
 //            Timber.d("touch:longclick")
@@ -41,9 +46,10 @@ class DianzanFragment : BaseFragment() {
 //        }
 
 
-        binding.btnRestoreDianzan.setOnClickListener {
-            binding.viewDianzan.retoreUnLiked()
-        }
+//        binding.btnRestoreDianzan.setOnClickListener {
+//            binding.viewDianzan.retoreUnLiked()
+//        }
+
     }
 
 

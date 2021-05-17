@@ -21,7 +21,10 @@ import java.lang.ref.WeakReference
  * createTime：2019/4/18
  * describe：
  */
-abstract class BaseDialogFragment(val dialogType: Int = DIALOG_TYPE_FULL_SCREEN, val width: Int = WindowManager.LayoutParams.WRAP_CONTENT) : DialogFragment(){
+abstract class BaseDialogFragment(
+    val dialogType: Int = DIALOG_TYPE_FULL_SCREEN,
+    val width: Int = WindowManager.LayoutParams.WRAP_CONTENT
+) : DialogFragment() {
 
     companion object {
         const val DIALOG_TYPE_FULL_SCREEN = 0
@@ -32,7 +35,7 @@ abstract class BaseDialogFragment(val dialogType: Int = DIALOG_TYPE_FULL_SCREEN,
 
     private val onKeyListener = object : DialogInterface.OnKeyListener {
         override fun onKey(dialog: DialogInterface?, keyCode: Int, event: KeyEvent?): Boolean {
-            if (keyCode == KeyEvent.KEYCODE_BACK && event?.action == KeyEvent.ACTION_DOWN){
+            if (keyCode == KeyEvent.KEYCODE_BACK && event?.action == KeyEvent.ACTION_DOWN) {
                 onKeyDownLog()
                 onBackPressed?.run {
                     invoke()
@@ -44,7 +47,7 @@ abstract class BaseDialogFragment(val dialogType: Int = DIALOG_TYPE_FULL_SCREEN,
     }
 
 
-    private fun onKeyDownLog(){
+    private fun onKeyDownLog() {
         Timber.d("onBackPressed${javaClass.simpleName}")
     }
 
@@ -68,21 +71,30 @@ abstract class BaseDialogFragment(val dialogType: Int = DIALOG_TYPE_FULL_SCREEN,
         dialog?.setCancelable(false)
         dialog?.setOnKeyListener(onKeyListener)
         dialog?.window?.run {
-            setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+            setFlags(
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+            )
             val activitySystemUiVisibility = activity?.window?.decorView?.systemUiVisibility
             decorView.systemUiVisibility = activitySystemUiVisibility!!
             setBackgroundDrawableResource(R.color.transparent)
             decorView.setPadding(0, 0, 0, 0)
-            when(dialogType){
-                DIALOG_TYPE_FULL_SCREEN ->{
-                    setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
+            when (dialogType) {
+                DIALOG_TYPE_FULL_SCREEN -> {
+                    setLayout(
+                        WindowManager.LayoutParams.MATCH_PARENT,
+                        WindowManager.LayoutParams.MATCH_PARENT
+                    )
                 }
-                DIALOG_TYPE_CENTER_POPUP ->{
+                DIALOG_TYPE_CENTER_POPUP -> {
                     setLayout(width, WindowManager.LayoutParams.WRAP_CONTENT)
                     attributes.gravity = Gravity.CENTER
                 }
-                DIALOG_TYPE_BOTTOM_POPUP ->{
-                    setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT)
+                DIALOG_TYPE_BOTTOM_POPUP -> {
+                    setLayout(
+                        WindowManager.LayoutParams.MATCH_PARENT,
+                        WindowManager.LayoutParams.WRAP_CONTENT
+                    )
                     attributes.gravity = Gravity.BOTTOM
                 }
             }
@@ -127,8 +139,6 @@ abstract class BaseDialogFragment(val dialogType: Int = DIALOG_TYPE_FULL_SCREEN,
     }
 
 
-
-
     override fun onResume() {
         Timber.d("Lifecycle: ${javaClass.simpleName}___onResume")
         super.onResume()
@@ -150,7 +160,7 @@ abstract class BaseDialogFragment(val dialogType: Int = DIALOG_TYPE_FULL_SCREEN,
         Timber.d("Lifecycle: ${javaClass.simpleName}___onHiddenChanged")
 
         super.onHiddenChanged(hidden)
-        if(hidden){
+        if (hidden) {
 
         } else {
             (activity as BaseActivity).currentFragment = WeakReference(this)
@@ -165,7 +175,7 @@ abstract class BaseDialogFragment(val dialogType: Int = DIALOG_TYPE_FULL_SCREEN,
         Timber.d("onBackPressed: ${javaClass.simpleName}")
     }
 
-    fun back(){
+    fun back() {
         logOnBackPressed()
         onBackPressed?.invoke()
     }
