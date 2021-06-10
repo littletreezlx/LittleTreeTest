@@ -2,7 +2,7 @@ package com.example.littletreetest.base
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.littletreetest.MyApp
+import com.example.littletreetest.App
 
 object SpUtil {
 
@@ -13,7 +13,7 @@ object SpUtil {
     }
 
     private val preferences: SharedPreferences by lazy {
-        MyApp.context.getSharedPreferences("user", Context.MODE_PRIVATE)
+        App.appContext.getSharedPreferences("user", Context.MODE_PRIVATE)
     }
 
     var isGm: Boolean

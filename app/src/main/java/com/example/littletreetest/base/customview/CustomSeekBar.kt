@@ -8,7 +8,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.widget.SeekBar
 import com.example.littletreetest.R
-import com.mixu.jingtu.common.ext.dp2px
+import com.mixu.jingtu.common.ext.dp
 import timber.log.Timber
 
 class CustomSeekBar : androidx.appcompat.widget.AppCompatSeekBar {
@@ -30,7 +30,7 @@ class CustomSeekBar : androidx.appcompat.widget.AppCompatSeekBar {
     }
 
 
-    var thumbRadius = dp2px(17f)
+    var thumbRadius = 17.dp
 
     lateinit var thumbDrawable: Drawable
 

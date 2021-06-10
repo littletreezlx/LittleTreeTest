@@ -1,17 +1,25 @@
 package com.mixu.jingtu.common.ext
 
-import android.content.res.Configuration
+import android.content.Context
 import android.os.Bundle
 import android.os.Looper
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.example.littletreetest.MyApp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.viewbinding.ViewBinding
+import com.example.littletreetest.App
 import timber.log.Timber
 import java.io.Serializable
+import java.text.NumberFormat
 import java.util.concurrent.Executors
+import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KProperty
 
 
 private val IO_EXECUTOR = Executors.newSingleThreadExecutor()
@@ -28,7 +36,7 @@ fun runOnIOThread(f: () -> Unit) {
     IO_EXECUTOR.execute(f)
 }
 
-var lastToast: Toast = Toast.makeText(MyApp.context, "", Toast.LENGTH_SHORT)
+var lastToast: Toast = Toast.makeText(App.appContext, "", Toast.LENGTH_SHORT)
 
 
 //fun showToast(message: String) {
@@ -40,6 +48,22 @@ var lastToast: Toast = Toast.makeText(MyApp.context, "", Toast.LENGTH_SHORT)
 //    lastToast = toast
 //}
 
+//
+//fun showToast(message: String) {
+//    //主线程
+//    if ("main" == Thread.currentThread().name) {
+//        Timber.d("ShowToast: ${Thread.currentThread().name}")
+//        showToastReally(message)
+//    } else {
+//        //异步
+//        App.getInstance().currentActivity?.get()?.let {
+//            it.runOnUiThread {
+//                showToastReally(message, it)
+//            }
+//        }
+//    }
+//}
+//
 
 //兼容子线程显示toast，加上looper
 fun showToast(message: String) {
@@ -64,8 +88,8 @@ fun showToast(message: String) {
 }
 
 
-private fun showToastReally(message: String) {
-    val toast = Toast.makeText(MyApp.context, message, Toast.LENGTH_SHORT)
+private fun showToastReally(message: String, context: Context = App.appContext) {
+    val toast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
     if (lastToast.view?.isShown == true) {
         lastToast.cancel()
     }
@@ -74,63 +98,47 @@ private fun showToastReally(message: String) {
 }
 
 
-/**
- * 判断当前设备是手机还是平板，代码来自 Google I/O App for Android
- *
- * @param context
- * @return 平板返回 True，手机返回 False
- */
-fun isPad(): Boolean {
-    return ((MyApp.context.resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE)
-}
-
-//fun EditText.getEditStr(): String{
-//    return text.toString()
-//}
-
-fun EditText.isAvailable(): Boolean {
-    return !text.isEmpty() && !text.trim().isEmpty()
-}
-
-
-fun EditText.isEmpty(): Boolean {
-    return text.isEmpty() || text.trim().isEmpty()
-}
-
-
-fun TextView.isEmpty(): Boolean {
-    return text.isEmpty() || text.trim().isEmpty()
+fun EditText.getTrimedString(): String {
+    if (text.isBlank()) {
+        return ""
+    } else {
+        return text.trim().toString()
+    }
 }
 
 
 fun EditText.getString(): String {
-    if (text.isEmpty()) {
+    if (text.isBlank()) {
+        return ""
+    } else {
+        return text.toString()
+    }
+}
+
+fun EditText.getInt(): Int {
+    if (text.isBlank()) {
+        return 0
+    } else {
+        return text.trim().toString().toInt()
+    }
+}
+
+fun TextView.getTrimedString(): String {
+    if (text.isBlank()) {
         return ""
     } else {
         return text.trim().toString()
     }
 }
 
-fun TextView.getString(): String {
-    if (text.isEmpty()) {
-        return ""
-    } else {
-        return text.trim().toString()
-    }
-}
 
-
-fun View.setGone() {
-    visibility = View.GONE
-}
-
-fun View.setVisible() {
-    visibility = View.VISIBLE
-}
-
-fun View.setInvisible() {
-    visibility = View.INVISIBLE
-}
+//fun  MutableList <T>.copyItems(): MutableList<T> {
+//    val copyedList = mutableListOf<T>()
+//    for (element in this) {
+//        copyedList.add(element.copy())
+//    }
+//    return copyedList
+//}
 
 
 fun Fragment.setArguments(vararg arguments: Pair<String, Any>) {
@@ -152,10 +160,78 @@ fun Fragment.setArguments(vararg arguments: Pair<String, Any>) {
 }
 
 
+fun Int.toFormatedMoney(): String {
+    val instance = NumberFormat.getNumberInstance()
+    return instance.format(this)
+}
+
 //fun DialogFragment.show(fragmentManager: FragmentManager) {
 //    this.show(fragmentManager, this.javaClass.simpleName)
 //}
 
 
+//fun Fragment.startGallery(successFun: (Uri)->Unit){
+//    registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//        if (result.resultCode == Activity.RESULT_OK) {
+//            result.data?.data?.let {
+//                successFun(it)
+//            }
+//        }
+//    }.launch(IntentUtils.getGalleryIntent())
+//}
+
+//fun Collection<E>.removeIf(filter: Predicate<in E?>): Boolean {
+//    Objects.requireNonNull(filter)
+//    var removed = false
+//    val each: Iterator<E> = iterator()
+//    while (each.hasNext()) {
+//        if (filter.test(each.next())) {
+//            each.remove()
+//            removed = true
+//        }
+//    }
+//    return removed
+//}
 
 
+//inline fun <reified VB : ViewBinding> Fragment.viewBinding() = lazy {
+//    VB::class.java.getMethod("bind", View::class.java)
+//        .invoke(this, view) as VB
+//}
+
+inline fun <reified VB : ViewBinding> Fragment.viewBinding() = FragmentBindingDelegate<VB> { requireView().bind() }
+
+inline fun <reified VB : ViewBinding> View.bind() =
+    VB::class.java.getMethod("bind", View::class.java).invoke(null, this) as VB
+
+class FragmentBindingDelegate<VB : ViewBinding>(private val block: () -> VB) :
+    ReadOnlyProperty<Fragment, VB> {
+    private var binding: VB? = null
+
+    override fun getValue(thisRef: Fragment, property: KProperty<*>): VB {
+        if (binding == null) {
+            binding = block().also {
+                if (it is ViewDataBinding) it.lifecycleOwner = thisRef.viewLifecycleOwner
+            }
+            thisRef.doOnDestroyView {
+                if (thisRef is BindingLifecycleOwner) thisRef.onDestroyViewBinding(binding!!)
+                binding = null
+            }
+        }
+        return binding!!
+    }
+}
+
+
+interface BindingLifecycleOwner {
+    fun onDestroyViewBinding(destroyingBinding: ViewBinding)
+}
+
+
+inline fun Fragment.doOnDestroyView(crossinline block: () -> Unit) =
+    viewLifecycleOwner.lifecycle.addObserver(object : LifecycleObserver {
+        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+        fun onDestroyView() {
+            block.invoke()
+        }
+    })

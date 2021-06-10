@@ -11,7 +11,7 @@ import com.example.littletreetest.R
 import com.example.littletreetest.base.ui.SimpleSingleSelectableAdapter
 import com.example.littletreetest.databinding.PopupStoryFilterBinding
 import com.mixu.jingtu.common.component.GridLayoutDecoration
-import com.mixu.jingtu.common.ext.dp2px
+import com.mixu.jingtu.common.ext.dp
 
 
 class StoryFilterPopup(val context: Context) : BaseAnglePopupWindow() {
@@ -31,7 +31,7 @@ class StoryFilterPopup(val context: Context) : BaseAnglePopupWindow() {
         filterAdapter = StoryFilterAdapter(getLevelList())
         popupView.findViewById<RecyclerView>(R.id.rv_story_level).run {
             layoutManager = GridLayoutManager(context, 1)
-            addItemDecoration(GridLayoutDecoration(3, dp2px(10f), dp2px(10f)))
+            addItemDecoration(GridLayoutDecoration(3, 10.dp, 10.dp))
             adapter = filterAdapter
         }
         filterAdapter.setOnItemClickListener { adapter, view, position ->

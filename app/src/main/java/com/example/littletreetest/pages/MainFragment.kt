@@ -7,6 +7,9 @@ import androidx.navigation.navOptions
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentMainBinding
+import com.example.littletreetest.pages.testthird.curtain.CurtainFragment
+import com.example.littletreetest.test.scrollviewandviewpager2.BlankAFragment
+import com.qw.curtain.lib.Curtain
 
 class MainFragment : BaseFragment() {
 
@@ -18,23 +21,36 @@ class MainFragment : BaseFragment() {
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentMainBinding.bind(view)
         binding.btnHhh.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToFreeFragment()
-            val options = navOptions {
-                popUpTo(R.id.mainFragment) {
-                    inclusive = false
-                }
-//                anim {
-//                    enter = R.anim.fragment_fade_enter
-//                    exit = R.anim.fragment_fade_exit
-//                    popEnter = R.anim.fragment_fade_enter
-//                    popExit = R.anim.fragment_fade_exit
+//            val action = MainFragmentDirections.actionMainFragmentToFreeFragment()
+//            val options = navOptions {
+//                popUpTo(R.id.mainFragment) {
+//                    inclusive = false
 //                }
-            }
-            findNavController().navigate(action, options)
+//            }
+//            findNavController().navigate(action, options)
+
+
+//            val action = MainFragmentDirections.actionMainFragmentToDianzanFragment()
+//            findNavController().navigate(action)
+
+
+
+//            childFragmentManager.beginTransaction()
+//                .replace(R.id.root, CurtainFragment()).commit()
+
+            CurtainFragment().show(childFragmentManager, "111")
+
+
+
         }
 
-        val action = MainFragmentDirections.actionMainFragmentToDianzanFragment()
-        findNavController().navigate(action)
+        Curtain(this)
+            .with(binding.btnHhh)
+//            .withPadding(binding.tvTest, Padding.all(20.dp))
+            .show()
     }
+
+
+
 
 }

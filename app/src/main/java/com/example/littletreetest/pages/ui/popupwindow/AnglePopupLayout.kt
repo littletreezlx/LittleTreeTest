@@ -5,7 +5,7 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.example.littletreetest.R
-import com.mixu.jingtu.common.ext.dp2px
+import com.mixu.jingtu.common.ext.dp
 import timber.log.Timber
 
 class AnglePopupLayout(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs) {
@@ -35,7 +35,7 @@ class AnglePopupLayout(context: Context, attrs: AttributeSet?) : FrameLayout(con
 
 
     //边框线宽度
-    var mStrokeWidth: Float = dp2px(1f).toFloat()
+    var mStrokeWidth: Float = 1.dp.toFloat()
 
     //边框线颜色
     var mStrokeColor: Int = Color.parseColor("#333333")
@@ -45,14 +45,14 @@ class AnglePopupLayout(context: Context, attrs: AttributeSet?) : FrameLayout(con
     var angleOrientation: Int = ANGLE_ORIENTATION_DOWN
 
     //三角的x轴位置
-    var angleX: Float = dp2px(18f).toFloat()
+    var angleX: Float = 18.dp.toFloat()
 
     //三角高度
-    var angleHeight: Float = dp2px(6f).toFloat()
+    var angleHeight: Float = 6.dp.toFloat()
 //    val angleHeight: Float = dp2px(30f).toFloat()
 
     //三角宽度
-    var angleWidth: Float = dp2px(10f).toFloat()
+    var angleWidth: Float = 10.dp.toFloat()
 //    val angleWidth: Float = dp2px(30f).toFloat()
 
 
@@ -150,7 +150,6 @@ class AnglePopupLayout(context: Context, attrs: AttributeSet?) : FrameLayout(con
         mWidth = (right - left).toFloat()
         mHeight = (bottom - top).toFloat()
 
-        Timber.d("height: ${dp2px(50f)}")
         Timber.d("height: ${mHeight}")
     }
 

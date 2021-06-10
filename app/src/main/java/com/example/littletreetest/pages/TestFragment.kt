@@ -6,7 +6,7 @@ import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentTestBinding
 import com.example.littletreetest.pages.ui.popupwindow.StoryFilterPopup
-import com.mixu.jingtu.common.ext.dp2px
+import com.mixu.jingtu.common.ext.dp
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -26,7 +26,7 @@ class TestFragment : BaseFragment() {
 
         binding.tvTest.setOnClickListener {
             val popup = StoryFilterPopup(requireContext())
-            popup.show(it, dp2px(220f), 0)
+            popup.show(it, 220.dp, 0)
         }
     }
 }
