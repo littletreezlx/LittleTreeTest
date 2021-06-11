@@ -10,7 +10,7 @@ import com.example.littletreetest.pages.ui.jetpack.MyLifecycleObservable
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
-
+//test in add
 abstract class BaseFragment : Fragment() {
 
 
