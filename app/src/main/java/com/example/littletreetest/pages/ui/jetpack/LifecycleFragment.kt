@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages
+package com.example.littletreetest.pages.ui.jetpack
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import com.mixu.jingtu.common.ext.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TestFragment : BaseFragment() {
+class LifecycleFragment : BaseFragment() {
 
 
     override val layoutId = R.layout.fragment_test
@@ -18,6 +18,7 @@ class TestFragment : BaseFragment() {
 
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
+
     }
 
 }

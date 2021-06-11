@@ -1,4 +1,5 @@
-package com.example.littletreetest.pages.node;
+package com.example.littletreetest.pages.ui.recyclerview.node;
+
 
 import com.chad.library.adapter.base.entity.node.BaseNode;
 import com.chad.library.adapter.base.provider.BaseNodeProvider;
@@ -7,20 +8,19 @@ import com.example.littletreetest.R;
 
 import org.jetbrains.annotations.NotNull;
 
-public class FirstProvider extends BaseNodeProvider {
+public class ThirdProvider extends BaseNodeProvider {
 
     @Override
     public int getItemViewType() {
-        return 1;
+        return 3;
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.item_node_first;
+        return R.layout.item_node_third;
     }
 
     @Override
     public void convert(@NotNull BaseViewHolder helper, @NotNull BaseNode data) {
     }
-
 }

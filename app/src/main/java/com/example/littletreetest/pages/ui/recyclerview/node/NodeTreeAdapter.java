@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages.node;
+package com.example.littletreetest.pages.ui.recyclerview.node;
 
 
 import com.chad.library.adapter.base.BaseNodeAdapter;

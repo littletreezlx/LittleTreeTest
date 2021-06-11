@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import com.example.littletreetest.pages.ui.jetpack.MyLifecycleObservable
 import timber.log.Timber
 import java.lang.ref.WeakReference
 
@@ -36,7 +37,9 @@ abstract class BaseFragment : Fragment() {
 //            }
         }
         (activity as BaseActivity).currentFragment = WeakReference(this)
+        lifecycle.addObserver(MyLifecycleObservable(javaClass.simpleName))
     }
+
 
     fun logOnBackPressed() {
         Timber.d("onBackPressed: ${javaClass.simpleName}")
@@ -54,7 +57,6 @@ abstract class BaseFragment : Fragment() {
         layoutId?.let {
             view = inflater.inflate(it, container, false)
         }
-//        setViewBinding(view)
         return view
     }
 

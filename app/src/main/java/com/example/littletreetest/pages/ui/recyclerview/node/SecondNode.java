@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages.node;
+package com.example.littletreetest.pages.ui.recyclerview.node;
 
 import com.chad.library.adapter.base.entity.node.BaseExpandNode;
 import com.chad.library.adapter.base.entity.node.BaseNode;
@@ -7,12 +7,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FirstNode extends BaseExpandNode {
+public class SecondNode extends BaseExpandNode {
 
     private List<BaseNode> childNode;
     private String title;
 
-    public FirstNode(List<BaseNode> childNode, String title) {
+    public SecondNode(List<BaseNode> childNode, String title) {
         this.childNode = childNode;
         this.title = title;
 
@@ -22,7 +22,6 @@ public class FirstNode extends BaseExpandNode {
     public String getTitle() {
         return title;
     }
-
 
     @Nullable
     @Override

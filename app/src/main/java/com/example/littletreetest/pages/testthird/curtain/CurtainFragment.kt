@@ -5,9 +5,7 @@ import android.view.View
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseDialogFragment
 import com.example.littletreetest.databinding.FragmentCurtainBinding
-import com.mixu.jingtu.common.ext.dp
 import com.qw.curtain.lib.Curtain
-import com.qw.curtain.lib.Padding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

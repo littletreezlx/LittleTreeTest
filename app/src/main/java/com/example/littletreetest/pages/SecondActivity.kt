@@ -15,18 +15,9 @@ class SecondActivity : BaseActivity() {
     @Inject
     lateinit var repo: FreeRepo
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-//        supportFragmentManager.beginTransaction()
-//            .replace(
-//                R.id.container,
-//                FreeFragment()
-//            )
-//            .commitNow()
-
-        Timber.d(repo.toString())
     }
 
 }

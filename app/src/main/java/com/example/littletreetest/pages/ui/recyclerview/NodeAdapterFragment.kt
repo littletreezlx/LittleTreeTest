@@ -1,4 +1,4 @@
-package com.example.littletreetest.pages
+package com.example.littletreetest.pages.ui.recyclerview
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import com.chad.library.adapter.base.entity.node.BaseNode
 import com.example.littletreetest.R
 import com.example.littletreetest.base.BaseFragment
-import com.example.littletreetest.pages.node.FirstNode
-import com.example.littletreetest.pages.node.NodeTreeAdapter
-import com.example.littletreetest.pages.node.SecondNode
-import com.example.littletreetest.pages.node.ThirdNode
+import com.example.littletreetest.pages.ui.recyclerview.node.FirstNode
+import com.example.littletreetest.pages.ui.recyclerview.node.NodeTreeAdapter
+import com.example.littletreetest.pages.ui.recyclerview.node.SecondNode
+import com.example.littletreetest.pages.ui.recyclerview.node.ThirdNode
 
 class NodeAdapterFragment : BaseFragment() {
 
