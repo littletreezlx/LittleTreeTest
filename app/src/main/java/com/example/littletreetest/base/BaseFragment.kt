@@ -17,6 +17,7 @@ abstract class BaseFragment : Fragment() {
     var backCallBack: OnBackPressedCallback? = null
 
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
     }
