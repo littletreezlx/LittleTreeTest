@@ -11,7 +11,7 @@ import androidx.viewbinding.ViewBinding
 import com.example.ext.BindingLifecycleOwner
 import timber.log.Timber
 
-
+//hhh
 abstract class CommonBaseFragment: Fragment(), BindingLifecycleOwner {
 
 
