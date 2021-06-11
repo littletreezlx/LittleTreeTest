@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/background_3d4456_r10"
+              android:orientation="horizontal">
+
+    <LinearLayout
+            android:id="@+id/layout_copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="24dp"
+            android:paddingTop="9dp"
+            android:paddingBottom="11dp"
+            android:orientation="vertical">
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:layout_gravity="center_horizontal"
+                   android:background="@drawable/icon_sys_copy"/>
+
+        <TextView
+                android:id="@+id/tv_copy"
+                android:text="复制"
+                android:layout_gravity="center_horizontal"
+                style="@style/OperateTextView"/>
+    </LinearLayout>
+    <TextView
+            android:id="@+id/tv_select_all"
+            android:text="@string/select_all"
+            android:visibility="gone"
+            style="@style/OperateTextView"/>
+    <ImageView android:layout_width="1dp"
+               android:layout_height="16dp"
+               android:layout_gravity="center_vertical"
+               android:background="#ffffff"/>
+    <LinearLayout
+            android:id="@+id/layout_push"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="24dp"
+            android:paddingTop="9dp"
+            android:paddingBottom="11dp"
+            android:orientation="vertical">
+        <ImageView android:layout_width="30dp"
+                   android:layout_height="30dp"
+                   android:layout_gravity="center_horizontal"
+                   android:background="@drawable/icon_sys_push"/>
+
+        <TextView
+                android:id="@+id/tv_select_push"
+                android:text="展示"
+                android:layout_gravity="center_horizontal"
+                style="@style/OperateTextView"/>
+    </LinearLayout>
+
+</LinearLayout>

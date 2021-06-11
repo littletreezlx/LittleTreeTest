@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+    <color name="gray">#c1c1c1</color>
+    <color name="text_gray">#888888</color>
+    <color name="text_dark">#454545</color>
+    <color name="basic_title_color">#EEC023</color>
+    <color name="modulePartitionLine">#80E8E8E8</color>
+
+    <color name="colorTextDark">#ff301207</color>
+
+    <color name="red">#FF0000</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--Text-->
+    <color name="colorText">#e8e8e8</color>
+    <!--Splash-->
+    <color name="white">#FFFFFF</color>
+    <color name="gery">#FAFAFA</color>
+    <color name="darkgery">#797979</color>
+    <color name="trangery">#512e2e2e</color>
+    <color name="black">#000000</color>
+
+
+    <!--底部的颜色-->
+    <color name="bottomColor">#3D4456</color>
+
+    <color name="textColorPrimary">#ABA9A9</color>
+
+    <color name="color_gray">#9a9a9a</color>
+
+    <color name="transparent">#00000000</color>
+
+
+    <!--DialogFragment阴影颜色-->
+    <color name="dialog_shadow">#88000000</color>
+
+
+    <!--  房间私聊界面  -->
+    <color name="tv_private_chat_unselected">#666666</color>
+
+
+    <!--  滚动条的颜色  -->
+    <color name="scrollview">#AEAEAE</color>
+
+
+
+</resources>
