@@ -1,6 +1,6 @@
 package com.example.littletreetest.usecase
 
-import com.DataResult
+import com.example.littletreetest.base.DataResult
 import com.example.littletreetest.pages.free.Free
 import com.example.littletreetest.pages.free.FreeRepo
 import kotlinx.coroutines.flow.Flow

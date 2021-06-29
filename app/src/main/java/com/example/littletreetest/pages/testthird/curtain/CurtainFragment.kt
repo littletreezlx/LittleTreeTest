@@ -2,10 +2,9 @@ package com.example.littletreetest.pages.testthird.curtain
 
 import android.os.Bundle
 import android.view.View
+import com.example.common_base.base.BaseDialogFragment
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseDialogFragment
 import com.example.littletreetest.databinding.FragmentCurtainBinding
-import com.qw.curtain.lib.Curtain
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,10 +19,10 @@ class CurtainFragment : BaseDialogFragment() {
 
     override fun initView(view: View, savedInstanceState: Bundle?) {
         binding = FragmentCurtainBinding.bind(view)
-        Curtain(this)
-            .with(binding.tvTest)
-//            .withPadding(binding.tvTest, Padding.all(20.dp))
-            .show()
+//        Curtain(this)
+//            .with(binding.tvTest)
+////            .withPadding(binding.tvTest, Padding.all(20.dp))
+//            .show()
     }
 
 

@@ -6,7 +6,7 @@ import android.view.View
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navGraphViewModels
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentFree2Binding
 import com.example.littletreetest.pages.SecondActivity
 import dagger.hilt.android.AndroidEntryPoint

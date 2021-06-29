@@ -6,10 +6,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navGraphViewModels
 import androidx.navigation.navOptions
+import com.example.common_base.base.BaseFragment
+import com.example.common_base.ext.showToast
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentFreeBinding
-import com.mixu.jingtu.common.ext.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject

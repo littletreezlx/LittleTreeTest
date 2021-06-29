@@ -10,8 +10,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.animation.LinearInterpolator
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
+import com.example.common_base.ext.dp
 import com.example.littletreetest.R
-import com.mixu.jingtu.common.ext.dp
 import timber.log.Timber
 import java.util.*
 import kotlin.random.Random

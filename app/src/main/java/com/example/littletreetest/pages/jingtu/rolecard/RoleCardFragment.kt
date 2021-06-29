@@ -5,9 +5,9 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
+import com.example.common_base.views.recyclerview.GridLayoutDecoration
 import com.example.littletreetest.databinding.FragmentRoomRoleCardBinding
-import com.mixu.jingtu.common.component.GridLayoutDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

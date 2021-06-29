@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
+import com.example.common_base.ext.showToast
 import com.example.littletreetest.databinding.FragmentDianzanBinding
-import com.mixu.jingtu.common.ext.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay

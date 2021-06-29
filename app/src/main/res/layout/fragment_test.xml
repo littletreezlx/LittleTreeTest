@@ -1,32 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical">
-
-    <com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="15dp"
-        app:apl_radius="6dp"
-        app:apl_stroke_color="#D0D0D1">
-
-        <TextView
-            android:id="@+id/tv_intro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="11dp"
-            android:layout_marginRight="18dp"
-            android:text="欢迎来到镜土，请问这是你的初次到访吗？"
-            android:textColor="#111111"
-            android:textSize="14dp" />
-
-    </com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout>
 
 
     <TextView
@@ -34,9 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="80dp"
-        android:background="#777777"
-        android:text="test"
-        android:textSize="30dp" />
+        android:background="#77777777"
+        android:text="@{vm.test}"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        tools:text="test" />
+
 
 </FrameLayout>

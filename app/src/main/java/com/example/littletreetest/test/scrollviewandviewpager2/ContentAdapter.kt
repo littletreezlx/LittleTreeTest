@@ -1,8 +1,8 @@
 package com.example.littletreetest.test.scrollviewandviewpager2
 
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.example.common_base.views.recyclerview.SimpleSingleSelectableAdapter
 import com.example.littletreetest.R
-import com.example.littletreetest.base.ui.SimpleSingleSelectableAdapter
 
 class ContentAdapter(list: MutableList<String>) :
     SimpleSingleSelectableAdapter<String>(R.layout.item_content, list) {

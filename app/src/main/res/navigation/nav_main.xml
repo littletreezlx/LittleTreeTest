@@ -75,11 +75,11 @@
     <include app:graph="@navigation/nav_jetpack_compose" />
     <fragment
         android:id="@+id/recyclerViewFragment"
-        android:name="com.example.littletreetest.pages.ui.recyclerview.RecyclerViewFragment"
+        android:name="com.example.littletreetest.pages.uicomponent.recyclerview.RecyclerViewFragment"
         android:label="RecyclerViewFragment" />
     <fragment
         android:id="@+id/constraintLayoutFragment"
-        android:name="com.example.littletreetest.pages.ui.constraintlayout.ConstraintLayoutFragment"
+        android:name="com.example.littletreetest.pages.uicomponent.constraintlayout.ConstraintLayoutFragment"
         android:label="ConstraintLayoutFragment" />
     <fragment
         android:id="@+id/dianzanFragment"

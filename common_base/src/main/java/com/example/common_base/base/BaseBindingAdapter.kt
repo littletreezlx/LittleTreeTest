@@ -13,7 +13,6 @@ abstract class BaseBindingAdapter<T, VB : ViewBinding>(
 ) : BaseQuickAdapter<T, BaseBindingAdapter.BaseBindingHolder>(layoutResId) {
 
 
-
     override fun onCreateDefViewHolder(parent: ViewGroup, viewType: Int) =
         BaseBindingHolder(inflate(LayoutInflater.from(parent.context), parent, false))
 

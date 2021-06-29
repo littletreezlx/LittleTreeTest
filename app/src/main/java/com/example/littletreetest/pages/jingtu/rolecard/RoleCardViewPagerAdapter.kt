@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
 
 
 class RoleCardViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :

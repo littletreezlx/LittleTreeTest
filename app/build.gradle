@@ -32,8 +32,10 @@ android {
     }
     buildFeatures {
 //        compose true
+        dataBinding = true
         viewBinding true
     }
+
     kotlinOptions {
 //        jvmTarget = "11"
 //        useIR = true

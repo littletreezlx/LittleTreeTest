@@ -1,4 +1,4 @@
-<com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.example.littletreetest.pages.uicomponent.popupwindow.AnglePopupLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -22,4 +22,4 @@
         android:layout_height="wrap_content" />
 
 
-</com.example.littletreetest.pages.ui.popupwindow.AnglePopupLayout>
+</com.example.littletreetest.pages.uicomponent.popupwindow.AnglePopupLayout>

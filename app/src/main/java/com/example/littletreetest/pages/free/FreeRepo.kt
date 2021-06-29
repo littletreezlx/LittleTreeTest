@@ -1,9 +1,9 @@
 package com.example.littletreetest.pages.free
 
 import android.app.Activity
-import com.DataResult
-import com.doFailure
-import com.doSuccess
+import com.example.littletreetest.base.DataResult
+import com.example.littletreetest.base.doFailure
+import com.example.littletreetest.base.doSuccess
 import com.mixu.jingtu.common.base.BaseRepo
 import dagger.hilt.android.scopes.ActivityScoped
 import kotlinx.coroutines.Dispatchers
@@ -15,8 +15,6 @@ import javax.inject.Inject
 
 @ActivityScoped
 class FreeRepo @Inject constructor(
-//    @ActivityContext private val activity: FragmentActivity,
-//    @ApplicationContext context: Context,
     context: Activity,
     appRepo: AppRepo,
     face: HiltInterface,

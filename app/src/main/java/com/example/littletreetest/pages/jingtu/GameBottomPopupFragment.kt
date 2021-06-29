@@ -6,7 +6,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentGameBottomPopupBinding
 import com.mixu.jingtu.common.base.runOnce
 

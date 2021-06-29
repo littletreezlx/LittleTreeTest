@@ -3,25 +3,22 @@ package com.example.littletreetest
 
 import android.app.Application
 import android.content.Context
+import com.example.common_base.base.BaseApplication
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 
 @HiltAndroidApp
-class App : Application() {
+class App : BaseApplication() {
 
     companion object {
-        lateinit var appContext: Context
-
-
-        fun getInstance(): App = (appContext) as App
+//        fun getInstance(): App = (appContext) as App
     }
 
 
     override fun onCreate() {
         super.onCreate()
-        appContext = this
         Timber.plant(Timber.DebugTree())
-
     }
+
 }

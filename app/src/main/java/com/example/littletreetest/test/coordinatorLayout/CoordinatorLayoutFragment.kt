@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentCoordinatorLayoutBinding
 import com.example.littletreetest.test.scrollviewandviewpager2.TitleAdapter
 

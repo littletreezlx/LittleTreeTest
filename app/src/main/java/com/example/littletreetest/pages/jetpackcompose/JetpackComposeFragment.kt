@@ -3,7 +3,7 @@ package com.example.littletreetest.pages.jetpackcompose
 import android.os.Bundle
 import android.view.View
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentFreeBinding
 import dagger.hilt.android.AndroidEntryPoint
 

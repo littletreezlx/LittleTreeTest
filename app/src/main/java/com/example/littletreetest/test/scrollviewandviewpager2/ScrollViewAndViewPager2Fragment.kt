@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentScrollviewAndViewpager2Binding
 
 class ScrollViewAndViewPager2Fragment : BaseFragment() {

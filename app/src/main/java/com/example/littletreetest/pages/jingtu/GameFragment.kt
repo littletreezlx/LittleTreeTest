@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentMockjingtuGameBinding
 import com.mixu.jingtu.common.base.runOnce
 import dagger.hilt.android.AndroidEntryPoint

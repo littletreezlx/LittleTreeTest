@@ -3,7 +3,7 @@ package com.example.littletreetest.pages.jingtu.rolecard
 import android.os.Bundle
 import android.view.View
 import com.example.littletreetest.R
-import com.example.littletreetest.base.BaseFragment
+import com.example.common_base.base.BaseFragment
 import com.example.littletreetest.databinding.FragmentRolecardChildBinding
 import dagger.hilt.android.AndroidEntryPoint
 

@@ -1,8 +1,8 @@
 package com.example.littletreetest.pages.jingtu.rolecard
 
 import com.chad.library.adapter.base.viewholder.BaseViewHolder
+import com.example.common_base.views.recyclerview.SimpleSingleSelectableAdapter
 import com.example.littletreetest.R
-import com.mixu.jingtu.common.component.SimpleSingleSelectableAdapter
 
 class RoleCardTitleAdapter(list: MutableList<String>) :
     SimpleSingleSelectableAdapter<String>(R.layout.item_role_card_title, list) {

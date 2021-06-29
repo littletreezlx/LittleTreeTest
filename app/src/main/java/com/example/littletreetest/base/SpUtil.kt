@@ -12,16 +12,4 @@ object SpUtil {
         return this
     }
 
-    private val preferences: SharedPreferences by lazy {
-        App.appContext.getSharedPreferences("user", Context.MODE_PRIVATE)
-    }
-
-    var isGm: Boolean
-        get() {
-            return preferences.getBoolean(IS_GM, false)
-        }
-        set(value) {
-            preferences.edit().putBoolean(IS_GM, value).apply()
-        }
-
 }
